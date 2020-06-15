@@ -10,6 +10,7 @@ public class PlayerBuilding : MonoBehaviour
     public LayerMask environmentLayer;
 
     public float smoothSpeed = 75f;
+    public int maxClones;
 
     Vector3 rotation;
 
@@ -20,6 +21,9 @@ public class PlayerBuilding : MonoBehaviour
 
     bool buildingModeActive;
     bool useNormal = true;
+
+    int clones;
+    Vector3 previousPos;
 
     Camera cam;
     GameObject currentSelectionPreview;
@@ -79,6 +83,7 @@ public class PlayerBuilding : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
         {
+            Debug.DrawLine(transform.position, hit.point, Color.red);
             if (currentSelectionPreview)
             {
                 currentSelectionPreview.transform.position = hit.point;
@@ -91,8 +96,22 @@ public class PlayerBuilding : MonoBehaviour
                 RotatePiece();
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-                Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+
+                if (clones < maxClones)
+                {
+                    if (previousPos == hit.point)
+                        Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
+                    previousPos = hit.point;
+                    clones++;
+                }
+            }
+            else
+            {
+
+                Debug.Log("There are too many clones in the scene! " + clones + " " + maxClones);
+            }
         }
     }
 
@@ -100,7 +119,8 @@ public class PlayerBuilding : MonoBehaviour
     {
         scrollWheel += Input.mouseScrollDelta.y;
 
-        if(currentSelectionPreview)
-            currentSelectionPreview.transform.Rotate(Vector3.up, scrollWheel * rotateSpeed);
+        if (currentSelectionPreview)
+                currentSelectionPreview.transform.Rotate(Vector3.up, scrollWheel * rotateSpeed);
+
     }
 }
