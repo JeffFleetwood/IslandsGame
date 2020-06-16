@@ -8,9 +8,11 @@ public class PlayerBuilding : MonoBehaviour
     public float rayDistance = 100;
     public float rotateSpeed = 5f;
     public LayerMask environmentLayer;
+    public LineRenderer renderer;
 
     public float smoothSpeed = 75f;
     public int maxClones;
+    public bool useHoldMech;
 
     Vector3 rotation;
 
@@ -34,14 +36,20 @@ public class PlayerBuilding : MonoBehaviour
         currentSelectionPreview = Instantiate(buildingOptions[0]);
         currentSelectionPreview.gameObject.layer = LayerMask.NameToLayer("Default");
         currentSelectionPreview.gameObject.SetActive(false);
+
+        renderer.SetPosition(0, Vector3.zero);
+        renderer.SetPosition(1, Vector3.zero);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
+        {
             buildingModeActive = !buildingModeActive;
+        }
 
         currentSelectionPreview.gameObject.SetActive(currentSelectionPreview && buildingModeActive);
+
         if (!buildingModeActive) return;
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -83,7 +91,9 @@ public class PlayerBuilding : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
         {
-            Debug.DrawLine(transform.position, hit.point, Color.red);
+            renderer.SetPosition(0, transform.position + new Vector3(0, 1f, 0));
+            renderer.SetPosition(1, hit.point);
+
             if (currentSelectionPreview)
             {
                 currentSelectionPreview.transform.position = hit.point;
@@ -96,22 +106,34 @@ public class PlayerBuilding : MonoBehaviour
                 RotatePiece();
             }
 
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (useHoldMech)
             {
-
-                if (clones < maxClones)
+                if (Input.GetKey(KeyCode.Mouse0))
                 {
-                    if (previousPos == hit.point)
-                        Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
-                    previousPos = hit.point;
-                    clones++;
+
+                    if (clones < maxClones)
+                    {
+                        if (previousPos != hit.point)
+                        {
+                            Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
+                        }
+                        previousPos = hit.point;
+                        clones++;
+                    }
+                    else
+                    {
+                        Debug.Log("There are too many clones in the scene! " + clones + " " + maxClones);
+                    }
                 }
             }
             else
             {
-
-                Debug.Log("There are too many clones in the scene! " + clones + " " + maxClones);
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
+                }
             }
+            
         }
     }
 
@@ -120,7 +142,9 @@ public class PlayerBuilding : MonoBehaviour
         scrollWheel += Input.mouseScrollDelta.y;
 
         if (currentSelectionPreview)
-                currentSelectionPreview.transform.Rotate(Vector3.up, scrollWheel * rotateSpeed);
+        {
+            currentSelectionPreview.transform.Rotate(Vector3.up, scrollWheel * rotateSpeed);
+        }
 
     }
 }
