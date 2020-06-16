@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 9.2e-44, z: 0.109375, w: 0.22265625}
+  m_BoundingSphereOverride: {x: 2.9835e-41, y: 1.05e-43, z: 4.68e-43, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 1211998696}
   - component: {fileID: 1211998695}
   - component: {fileID: 1211998694}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ MonoBehaviour:
   jumpForce: 10
   groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!114 &1650760510
 MonoBehaviour:
   m_ObjectHideFlags: 0

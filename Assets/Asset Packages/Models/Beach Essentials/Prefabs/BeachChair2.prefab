@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4253053871391452}
   - component: {fileID: 33048604419292064}
   - component: {fileID: 23643393251872038}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -90,9 +89,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4304584490236410}
   - component: {fileID: 205377774600036960}
-  m_Layer: 8
+  - component: {fileID: 5908144946851681024}
+  m_Layer: 9
   m_Name: BeachChair2
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23125835738319426}
   m_Enabled: 1
+--- !u!65 &5908144946851681024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140669794324502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1320853039794402
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +170,7 @@ GameObject:
   - component: {fileID: 4697377095505782}
   - component: {fileID: 33439196865216128}
   - component: {fileID: 23944042792230802}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +213,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -237,7 +249,7 @@ GameObject:
   - component: {fileID: 4793293218707460}
   - component: {fileID: 33305690979467686}
   - component: {fileID: 23981433620375148}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +292,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -317,7 +328,7 @@ GameObject:
   - component: {fileID: 4184707351146432}
   - component: {fileID: 33574640522282062}
   - component: {fileID: 23125835738319426}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +371,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

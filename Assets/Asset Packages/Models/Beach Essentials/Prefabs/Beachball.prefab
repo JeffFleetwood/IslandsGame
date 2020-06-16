@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4014416154126204}
   - component: {fileID: 33512725264836766}
   - component: {fileID: 23027750623611258}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ball_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -90,7 +89,7 @@ GameObject:
   - component: {fileID: 4352168317936194}
   - component: {fileID: 33261747164787420}
   - component: {fileID: 23612508684457698}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ball_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +132,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -169,7 +167,7 @@ GameObject:
   - component: {fileID: 4295518903643980}
   - component: {fileID: 33042536739761906}
   - component: {fileID: 23476016171038548}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ball_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +210,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -248,7 +245,7 @@ GameObject:
   - component: {fileID: 4864818261106588}
   - component: {fileID: 33781284054683712}
   - component: {fileID: 23833113971612152}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ball_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +288,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -326,9 +322,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4423652834136564}
   - component: {fileID: 205420265130796682}
-  m_Layer: 8
+  - component: {fileID: -8600658706285616484}
+  m_Layer: 9
   m_Name: Beachball
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,3 +379,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23833113971612152}
   m_Enabled: 1
+--- !u!65 &-8600658706285616484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811662691901812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

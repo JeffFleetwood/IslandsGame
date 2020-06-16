@@ -22,6 +22,7 @@ public class PlayerBuilding : MonoBehaviour
     float scrollWheel;
 
     bool buildingModeActive;
+    bool destroyModeActive;
     bool useNormal = true;
 
     int clones;
@@ -43,20 +44,65 @@ public class PlayerBuilding : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             buildingModeActive = !buildingModeActive;
+            destroyModeActive = false;
+
+            renderer.startColor = Color.green;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            destroyModeActive = !destroyModeActive;
+            buildingModeActive = false;
+
+            renderer.startColor = Color.red;
         }
 
         currentSelectionPreview.gameObject.SetActive(currentSelectionPreview && buildingModeActive);
 
-        if (!buildingModeActive) return;
+        if (buildingModeActive)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                useNormal = !useNormal;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
-            useNormal = !useNormal;
-           
-        ChangePreviewPiece();
-        CreateBuildPiece();
+            ChangePreviewPiece();
+            CreateBuildPiece();
+        }
+
+        if (destroyModeActive)
+        {
+            DestroyObject();
+        }
+    }
+
+    void DestroyObject()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+
+        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
+        {
+            renderer.SetPosition(0, transform.position + new Vector3(0, 1f, 0));
+            renderer.SetPosition(1, hit.point);
+
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Debug.Log(hit.collider.gameObject);
+
+                if (hit.collider.gameObject.tag == "DestroyMe")
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+                else
+                {
+                    Debug.LogError("You can not destroy that you silly goose!");
+                }
+            }
+        }
     }
 
     void ChangePreviewPiece()  //Changes the currently selected piece with MouseWheel and creates a new preview of it.
@@ -111,18 +157,22 @@ public class PlayerBuilding : MonoBehaviour
                 if (Input.GetKey(KeyCode.Mouse0))
                 {
 
-                    if (clones < maxClones)
+                    if (hit.collider.gameObject.tag != "DestroyMe")
                     {
-                        if (previousPos != hit.point)
+                        if (clones < maxClones)
                         {
-                            Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
+                            if (previousPos != hit.point)
+                            {
+                                Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
+                            }
+                            previousPos = hit.point;
+                            clones++;
                         }
-                        previousPos = hit.point;
-                        clones++;
-                    }
-                    else
-                    {
-                        Debug.Log("There are too many clones in the scene! " + clones + " " + maxClones);
+                        else
+                        {
+                            Debug.Log("There are too many clones in the scene! " + clones + " " + maxClones);
+                        }
+
                     }
                 }
             }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4926743346240256}
   - component: {fileID: 33130654325900668}
   - component: {fileID: 23480401419270734}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Umbrella_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -92,7 +91,7 @@ GameObject:
   - component: {fileID: 4500918252146698}
   - component: {fileID: 33596370681936812}
   - component: {fileID: 23886749093968066}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +134,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,7 +170,7 @@ GameObject:
   - component: {fileID: 4833641806231906}
   - component: {fileID: 33449114089776838}
   - component: {fileID: 23760560065531402}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Umbrella_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +213,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -252,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4483039593984770}
   - component: {fileID: 205676787263686052}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Umbrella
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,9 +317,10 @@ GameObject:
   - component: {fileID: 33950800063318710}
   - component: {fileID: 23993082784500462}
   - component: {fileID: 64959071271402756}
-  m_Layer: 8
+  - component: {fileID: 2430654554939934648}
+  m_Layer: 9
   m_Name: LifeguardTower
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +364,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -401,10 +398,23 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 41b656d631bb340a396b501db5e1ba0d, type: 3}
+--- !u!65 &2430654554939934648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358425766654464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0602427, y: 25.740543, z: 0.9857059}
+  m_Center: {x: 0.0015199184, y: 12.886026, z: 0.023484796}
 --- !u!1 &1473843487051848
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4098052315243038}
   - component: {fileID: 205627835995707388}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +492,7 @@ GameObject:
   - component: {fileID: 4325215394546970}
   - component: {fileID: 33108349511052410}
   - component: {fileID: 23163789736866372}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +535,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -562,7 +571,7 @@ GameObject:
   - component: {fileID: 4455630225432788}
   - component: {fileID: 33722524322052658}
   - component: {fileID: 23480812669558248}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +614,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -642,7 +650,7 @@ GameObject:
   - component: {fileID: 4871808695336962}
   - component: {fileID: 33901911619922634}
   - component: {fileID: 23633273696449896}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Lifeguardsign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +693,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -722,7 +729,7 @@ GameObject:
   - component: {fileID: 4721391814404634}
   - component: {fileID: 33416984706512042}
   - component: {fileID: 23774168135156330}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Umbrella_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,7 +772,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -803,7 +809,7 @@ GameObject:
   - component: {fileID: 4379705375331326}
   - component: {fileID: 33966269865562290}
   - component: {fileID: 23478606783223116}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Umbrella_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +852,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -884,7 +889,7 @@ GameObject:
   - component: {fileID: 4275312374963746}
   - component: {fileID: 33894594470988760}
   - component: {fileID: 23320913938480248}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BeachChair_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +932,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
