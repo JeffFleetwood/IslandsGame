@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBuilding : MonoBehaviour
 {
-    public List<GameObject> buildingOptions;
+    /*public List<GameObject> buildingOptions;
     public float rayDistance = 100;
     public float rotateSpeed = 5f;
     public LayerMask environmentLayer;
@@ -29,9 +29,9 @@ public class PlayerBuilding : MonoBehaviour
     Vector3 previousPos;
 
     Camera cam;
-    GameObject currentSelectionPreview;
+    GameObject currentSelectionPreview;*/
 
-    private void Start()
+    /*private void Start()
     {
         cam = Camera.main;
         currentSelectionPreview = Instantiate(buildingOptions[0]);
@@ -40,11 +40,13 @@ public class PlayerBuilding : MonoBehaviour
 
         renderer.SetPosition(0, Vector3.zero);
         renderer.SetPosition(1, Vector3.zero);
-    }
+    }*/
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        NotRealInput();
+
+        /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             buildingModeActive = !buildingModeActive;
             destroyModeActive = false;
@@ -62,6 +64,129 @@ public class PlayerBuilding : MonoBehaviour
 
         currentSelectionPreview.gameObject.SetActive(currentSelectionPreview && buildingModeActive);
 
+        Build();*/
+    }
+
+    void NotRealInput()
+    {
+        bool buildMode = false;
+        bool selectionMode = false;
+        bool rotateMode = true;
+        bool scaleMode = false;
+        bool destroyMode = false;
+        bool mode = false;
+        int progress = 0;
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            progress = 0;
+        }
+
+        if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            progress = 1;
+            mode = false;
+        }
+
+        if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            mode = true;
+            progress = 1;
+            Debug.Log("Menu progress: " + progress);
+            return;
+        }
+        
+        if (!selectionMode && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            progress = 2;
+            Debug.Log("Menu progress: " + progress);
+            return;
+        }
+
+        if (!rotateMode && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            progress = 2;
+            Debug.Log("Menu progress: " + progress);
+            return;
+        }
+
+        if (!scaleMode && Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            progress = 2;
+            Debug.Log("Menu progress: " + progress);
+            return;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            if (progress < 1)
+            {
+                progress--;
+            }
+            else
+            {
+                Debug.LogError("Progress can not be less than zero you fool!");
+            }
+        }
+
+        switch (progress)
+        {
+            case 0:
+                buildMode = false;
+                selectionMode = false;
+                rotateMode = true;
+                scaleMode = false;
+                destroyMode = false;
+                Debug.Log("Progress Values Reset!");
+                break;
+            case 1:
+                if (!mode)
+                {
+                    destroyMode = true;
+                    buildMode = false;
+                    Debug.Log("Welcome to destory mode!");
+                }
+                else
+                {
+                    destroyMode = false;
+                    buildMode = true;
+                    selectionMode = false;
+                    Debug.Log("Welcome to build mode!");
+                }
+                break;
+            case 2:
+                selectionMode = true;
+                Debug.Log("Welcome to selection mode!");
+                break;
+            default:
+                Debug.LogError("Progress is overflowing the switch!");
+                break;
+        }
+
+        if (buildMode)
+        {
+            //BuildModeMethodHere
+
+            if (selectionMode)
+            {
+                //SelectionModeMethodHere
+
+                if (rotateMode)
+                {
+                    //RotateModeCodeHere
+                }
+                
+                if (scaleMode)
+                {
+                    //ScaleModeCodeHere
+                }
+            }
+        }
+
+    }
+
+    /*void Build()
+    {
         if (buildingModeActive)
         {
             if (Input.GetKeyDown(KeyCode.Tab))
@@ -102,20 +227,29 @@ public class PlayerBuilding : MonoBehaviour
 
     void ChangePreviewPiece()  //Changes the currently selected piece with MouseWheel and creates a new preview of it.
     {
-        if (Input.GetKeyDown(KeyCode.E))
+
+        scrollWheel = Input.GetAxisRaw("Mouse ScrollWheel");
+
+        Debug.Log(scrollWheel);
+
+        if (scrollWheel >= .1)
         {
+            Debug.Log(" > 1");
             if (currentSelection + 1 >= buildingOptions.Count)
                 currentSelection = 0;
             else
                 currentSelection++;
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
+        else if (scrollWheel <= -0.1)
         {
+            Debug.Log("< 1");
             if (currentSelection - 1 < 0)
                 currentSelection = buildingOptions.Count - 1;
             else
                 currentSelection--;
         }
+
+        scrollWheel = 0;
 
         if (currentSelection != lastSelection && currentSelectionPreview)
         {
@@ -187,5 +321,5 @@ public class PlayerBuilding : MonoBehaviour
             currentSelectionPreview.transform.Rotate(Vector3.up, scrollWheel * rotateSpeed);
         }
 
-    }
+    }*/
 }
