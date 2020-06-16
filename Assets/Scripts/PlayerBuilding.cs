@@ -91,15 +91,10 @@ public class PlayerBuilding : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                Debug.Log(hit.collider.gameObject);
 
                 if (hit.collider.gameObject.tag == "DestroyMe")
                 {
                     Destroy(hit.collider.gameObject);
-                }
-                else
-                {
-                    Debug.LogError("You can not destroy that you silly goose!");
                 }
             }
         }
@@ -167,10 +162,6 @@ public class PlayerBuilding : MonoBehaviour
                             }
                             previousPos = hit.point;
                             clones++;
-                        }
-                        else
-                        {
-                            Debug.Log("There are too many clones in the scene! " + clones + " " + maxClones);
                         }
 
                     }
