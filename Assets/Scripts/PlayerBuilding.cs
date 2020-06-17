@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerBuilding : MonoBehaviour
 {
-    /*public List<GameObject> buildingOptions;
+    public List<GameObject> buildingOptions;
     public float rayDistance = 100;
     public float rotateSpeed = 5f;
     public LayerMask environmentLayer;
@@ -14,25 +15,23 @@ public class PlayerBuilding : MonoBehaviour
     public int maxClones;
     public bool useHoldMech;
 
-    Vector3 rotation;
-
-    int lastSelection;
-    int currentSelection;
-
-    float scrollWheel;
-
-    bool buildingModeActive;
-    bool destroyModeActive;
     bool useNormal = true;
 
     int clones;
     Vector3 previousPos;
+    int lastSelection;
+    int currentSelection;
+
+    Vector3 renderPos1 = Vector3.zero;
+    Vector3 renderPos2 = Vector3.zero;
 
     Camera cam;
-    GameObject currentSelectionPreview;*/
+    GameObject currentSelectionPreview;
+    GameObject lastSelectionPreview;
 
-    /*private void Start()
+    private void Start()
     {
+        StartCoroutine(UpdateLineRender(1));
         cam = Camera.main;
         currentSelectionPreview = Instantiate(buildingOptions[0]);
         currentSelectionPreview.gameObject.layer = LayerMask.NameToLayer("Default");
@@ -40,7 +39,8 @@ public class PlayerBuilding : MonoBehaviour
 
         renderer.SetPosition(0, Vector3.zero);
         renderer.SetPosition(1, Vector3.zero);
-    }*/
+        renderer.endColor = Color.blue;
+    }
 
     bool buildMode = false;
     bool selectionMode = false;
@@ -50,35 +50,33 @@ public class PlayerBuilding : MonoBehaviour
     bool xRotateMode = false;
     bool yRotateMode = false;
     bool zRotateMode = false;
+    bool showLineRender = false;
+    bool scrollable = false;
 
     private void Update()
     {
+        RaycastHit hit;
+
         GetInput();
 
-        /*if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            buildingModeActive = !buildingModeActive;
-            destroyModeActive = false;
+            useNormal = !useNormal;
+        }
 
+        if (buildMode)
+        {
             renderer.startColor = Color.green;
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else
         {
-            destroyModeActive = !destroyModeActive;
-            buildingModeActive = false;
-
             renderer.startColor = Color.red;
         }
-
-        currentSelectionPreview.gameObject.SetActive(currentSelectionPreview && buildingModeActive);
-
-        Build();*/
     }
 
     void GetInput()
     {
-        if(!buildMode && !destroyMode)
+        if (!buildMode && !destroyMode)
         {
             Debug.Log("No Modes Activated!");
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -96,8 +94,9 @@ public class PlayerBuilding : MonoBehaviour
 
         if (buildMode)
         {
+            SelectionMode();
             Debug.Log("In Build Mode");
-            if(Input.GetKeyDown(KeyCode.Mouse1) && !selectionMode && !rotateMode && !scaleMode)
+            if (Input.GetKeyDown(KeyCode.Mouse1) && !selectionMode && !rotateMode && !scaleMode)
             {
                 Debug.Log("Build Mode");
                 buildMode = false;
@@ -111,7 +110,7 @@ public class PlayerBuilding : MonoBehaviour
                 return;
             }
 
-            if(Input.GetKeyDown(KeyCode.Alpha2) && !selectionMode && !scaleMode && !rotateMode)
+            if (Input.GetKeyDown(KeyCode.Alpha2) && !selectionMode && !scaleMode && !rotateMode)
             {
                 Debug.Log("Rotate Mode");
                 rotateMode = true;
@@ -125,11 +124,13 @@ public class PlayerBuilding : MonoBehaviour
                 return;
             }
 
-            if(selectionMode)
+            if (selectionMode)
             {
+                scrollable = true;
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     Debug.Log("Exit Selection Mode");
+                    scrollable = false;
                     selectionMode = false;
                     return;
                 }
@@ -137,7 +138,7 @@ public class PlayerBuilding : MonoBehaviour
                 SelectionMode();
             }
 
-            if(rotateMode)
+            if (rotateMode)
             {
                 Debug.Log("In Rotate Mode");
                 if (Input.GetKeyDown(KeyCode.Mouse1) && !xRotateMode && !yRotateMode && !zRotateMode)
@@ -202,7 +203,7 @@ public class PlayerBuilding : MonoBehaviour
                 }
             }
 
-            if(scaleMode)
+            if (scaleMode)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
@@ -226,10 +227,64 @@ public class PlayerBuilding : MonoBehaviour
             DestroyMode();
         }
     }
-
     void SelectionMode()
     {
+        RaycastHit hit;
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
+        {
+            currentSelectionPreview.transform.position = hit.point;
+        }
+
         Debug.Log("Calling Selection Mode Function");
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+        renderPos1 = transform.position;
+        renderPos2 = hit.point;
+        showLineRender = true;
+
+        if (scrollable)
+        {
+            if (scroll >= .1)
+            {
+                if (currentSelection + 1 >= buildingOptions.Count)
+                {
+                    currentSelection = 0;
+                }
+                else
+                {
+                    currentSelection++;
+                }
+            }
+            else if (scroll <= -0.1)
+            {
+                if (currentSelection - 1 < 0)
+                {
+                    currentSelection = buildingOptions.Count - 1;
+                }
+                else
+                {
+                    currentSelection--;
+                }
+            }
+        }
+
+        //Debug.Log("Current selection: " + currentSelection);
+
+        //Debug.LogError("The current selection is not within the bounds of the array!");
+
+        if (currentSelectionPreview == null)
+        {
+            
+        }
+
+        if (currentSelection != lastSelection && currentSelectionPreview)
+        {
+            Preview(currentSelection, lastSelection, hit.point);
+            lastSelection = currentSelection;
+            lastSelectionPreview = currentSelectionPreview;
+        }
     }
 
     void ScaleMode()
@@ -237,7 +292,7 @@ public class PlayerBuilding : MonoBehaviour
         Debug.Log("Calling Scale Mode Function");
     }
 
-    void RotateXMode()
+    void RotateXMode()  
     {
         Debug.Log("Calling Rotate X Mode Function");
     }
@@ -257,136 +312,32 @@ public class PlayerBuilding : MonoBehaviour
         Debug.Log("Calling Destroy Mode Function");
     }
 
-    //void NotRealInput()
-    //{
-    //    bool buildMode = false;
-    //    bool selectionMode = false;
-    //    bool rotateMode = true;
-    //    bool scaleMode = false;
-    //    bool destroyMode = false;
-    //    bool mode = false;
-    //    int progress = 0;
+    void Preview(int index, int lastIndex, Vector3 hit)
+    {
+        if (lastSelectionPreview)
+        {
+            Destroy(lastSelectionPreview);
+        }
 
-    //    if (Input.GetKeyDown(KeyCode.Alpha0))
-    //    {
-    //        progress = 0;
-    //    }
+        currentSelectionPreview = Instantiate(buildingOptions[index], hit, Quaternion.identity);
 
-    //    if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha2))
-    //    {
-    //        progress = 1;
-    //        mode = false;
-    //    }
+        List<Collider> colliders = new List<Collider>();
 
-    //    if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha1))
-    //    {
-    //        mode = true;
-    //        progress = 1;
-    //        Debug.Log("Menu progress: " + progress);
-    //        return;
-    //    }
-        
-    //    if (!selectionMode && Input.GetKeyDown(KeyCode.Alpha1))
-    //    {
-    //        progress = 2;
-    //        Debug.Log("Menu progress: " + progress);
-    //        return;
-    //    }
+        colliders.Add(currentSelectionPreview.GetComponent<Collider>());
 
-    //    if (!rotateMode && Input.GetKeyDown(KeyCode.Alpha2))
-    //    {
-    //        progress = 2;
-    //        Debug.Log("Menu progress: " + progress);
-    //        return;
-    //    }
+        foreach (Collider collider in currentSelectionPreview.GetComponentsInChildren<Collider>())
+        {
+            colliders.Add(collider);
+        }
 
-    //    if (!scaleMode && Input.GetKeyDown(KeyCode.Alpha3))
-    //    {
-    //        progress = 2;
-    //        Debug.Log("Menu progress: " + progress);
-    //        return;
-    //    }
-
-    //    if (Input.GetKey(KeyCode.Alpha4))
-    //    {
-    //        if (progress < 1)
-    //        {
-    //            progress--;
-    //        }
-    //        else
-    //        {
-    //            Debug.LogError("Progress can not be less than zero you fool!");
-    //        }
-    //    }
-
-    //    switch (progress)
-    //    {
-    //        case 0:
-    //            buildMode = false;
-    //            selectionMode = false;
-    //            rotateMode = true;
-    //            scaleMode = false;
-    //            destroyMode = false;
-    //            Debug.Log("Progress Values Reset!");
-    //            break;
-    //        case 1:
-    //            if (!mode)
-    //            {
-    //                destroyMode = true;
-    //                buildMode = false;
-    //                Debug.Log("Welcome to destory mode!");
-    //            }
-    //            else
-    //            {
-    //                destroyMode = false;
-    //                buildMode = true;
-    //                selectionMode = false;
-    //                Debug.Log("Welcome to build mode!");
-    //            }
-    //            break;
-    //        case 2:
-    //            selectionMode = true;
-    //            Debug.Log("Welcome to selection mode!");
-    //            break;
-    //        default:
-    //            Debug.LogError("Progress is overflowing the switch!");
-    //            break;
-    //    }
-
-    //    if (buildMode)
-    //    {
-    //        //BuildModeMethodHere
-
-    //        if (selectionMode)
-    //        {
-    //            //SelectionModeMethodHere
-
-    //            if (rotateMode)
-    //            {
-    //                //RotateModeCodeHere
-    //            }
-                
-    //            if (scaleMode)
-    //            {
-    //                //ScaleModeCodeHere
-    //            }
-    //        }
-    //    }
-
-    //}
+        foreach (Collider collider1 in colliders)
+        {
+            Destroy(collider1);
+        }
+    }
 
     /*void Build()
     {
-        if (buildingModeActive)
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                useNormal = !useNormal;
-            }
-
-            ChangePreviewPiece();
-            CreateBuildPiece();
-        }
 
         if (destroyModeActive)
         {
@@ -413,44 +364,9 @@ public class PlayerBuilding : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
-    void ChangePreviewPiece()  //Changes the currently selected piece with MouseWheel and creates a new preview of it.
-    {
-
-        scrollWheel = Input.GetAxisRaw("Mouse ScrollWheel");
-
-        Debug.Log(scrollWheel);
-
-        if (scrollWheel >= .1)
-        {
-            Debug.Log(" > 1");
-            if (currentSelection + 1 >= buildingOptions.Count)
-                currentSelection = 0;
-            else
-                currentSelection++;
-        }
-        else if (scrollWheel <= -0.1)
-        {
-            Debug.Log("< 1");
-            if (currentSelection - 1 < 0)
-                currentSelection = buildingOptions.Count - 1;
-            else
-                currentSelection--;
-        }
-
-        scrollWheel = 0;
-
-        if (currentSelection != lastSelection && currentSelectionPreview)
-        {
-            lastSelection = currentSelection;
-            Destroy(currentSelectionPreview);
-            currentSelectionPreview = Instantiate(buildingOptions[currentSelection].gameObject);
-            currentSelectionPreview.gameObject.layer = LayerMask.NameToLayer("Default");
-        }
-    }
-
-    void CreateBuildPiece()
+    /*void CreateBuildPiece()
     {
         RaycastHit hit;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
@@ -461,7 +377,6 @@ public class PlayerBuilding : MonoBehaviour
 
             if (currentSelectionPreview)
             {
-                currentSelectionPreview.transform.position = hit.point;
 
                 if (useNormal)
                     currentSelectionPreview.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
@@ -512,4 +427,23 @@ public class PlayerBuilding : MonoBehaviour
         }
 
     }*/
+
+    IEnumerator UpdateLineRender(int updateDelay)
+    {
+        while (true)
+        {
+            if (showLineRender)
+            {
+                renderer.SetPosition(0, renderPos1 + new Vector3(0, 1f, 0));
+                renderer.SetPosition(1, renderPos2);
+            }
+            else
+            {
+                renderer.SetPosition(0, Vector3.zero);
+                renderer.SetPosition(1, Vector3.zero);
+            }
+            yield return new WaitForSeconds(updateDelay / 100);
+        }
+    }
+        
 }

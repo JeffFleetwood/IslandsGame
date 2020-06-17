@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.9835e-41, y: 1.05e-43, z: 4.68e-43, w: 0}
+  m_BoundingSphereOverride: {x: 0.078125, y: 0.06640625, z: 0.02734375, w: -0.03125}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 1211998696}
   - component: {fileID: 1211998695}
   - component: {fileID: 1211998694}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,8 +491,8 @@ MonoBehaviour:
   - {fileID: 1811662691901812, guid: a53dc7c14dd524d869aff830ceb6addb, type: 3}
   - {fileID: 1764212042172296, guid: 7e2ebd9ccc7214b6abf033ced06d3c20, type: 3}
   - {fileID: 1487092437418672, guid: 166ca20d8679849429412da6990e81a3, type: 3}
-  - {fileID: 1742264509187146, guid: 5ec45ad715b4d4c23938acde15e70e43, type: 3}
   - {fileID: 1104595247253352, guid: 1dc3fac990a434af8bb491ba17503d86, type: 3}
+  - {fileID: 1742264509187146, guid: 5ec45ad715b4d4c23938acde15e70e43, type: 3}
   - {fileID: 1876011113592624, guid: 83bd97a15777345c98f6ffef269ce9c6, type: 3}
   - {fileID: 1140669794324502, guid: 49df472e0268c44ef9d290c6a0e189e1, type: 3}
   - {fileID: 1058797780974030, guid: c42244228094d412d95b66c1116ba56c, type: 3}
@@ -500,24 +500,21 @@ MonoBehaviour:
   - {fileID: 1637319330630942, guid: 7b047d6be874343ed89b39217d759622, type: 3}
   - {fileID: 1878976330372524, guid: 2b90d0c38e99d41acaa02470d023066d, type: 3}
   - {fileID: 1798972836926234, guid: 6b33a32ee238540e196deb1d94f361dd, type: 3}
+  - {fileID: 1545480771166068, guid: 744db4b24e25c46dfafd852803eaf62d, type: 3}
+  - {fileID: 1784049002061516, guid: c259968d1caaa4635b7c13f3f94e251e, type: 3}
   - {fileID: 1158395255746762, guid: d34ed44f711214307a87aa9850b9232c, type: 3}
   - {fileID: 1877819836946206, guid: 409b9a3db4c4d43e1b35d4ca8302f93e, type: 3}
   - {fileID: 1799704108992190, guid: 60f4bdfb49a7840a2989bbd741e814f2, type: 3}
   - {fileID: 1190449643264606, guid: 60f00f9b917704995bf06e2fd3c2c543, type: 3}
-  - {fileID: 8561019433199429785, guid: f80b7f84fab860f4a96e09ae77612334, type: 3}
-  - {fileID: 7325879198957947589, guid: 8d3ddab6575174940b96aeb4764268a3, type: 3}
-  - {fileID: 8817276065552509463, guid: 3a36f609355b22f48ab71c119f517d8f, type: 3}
-  - {fileID: 7245344795287731537, guid: b736b5480b5a9a345b8d5ab7459b2d21, type: 3}
-  - {fileID: 255899708301731807, guid: a96f888f662fdb846bf13c4354ac13e5, type: 3}
   rayDistance: 100
-  rotateSpeed: 10
+  rotateSpeed: 5
   environmentLayer:
     serializedVersion: 2
     m_Bits: 768
   renderer: {fileID: 1650760511}
   smoothSpeed: 75
-  maxClones: 10000
-  useHoldMech: 1
+  maxClones: 0
+  useHoldMech: 0
 --- !u!120 &1650760511
 LineRenderer:
   m_ObjectHideFlags: 0
