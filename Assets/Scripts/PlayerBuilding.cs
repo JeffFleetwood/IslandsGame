@@ -31,6 +31,7 @@ public class PlayerBuilding : MonoBehaviour
 
     private void Start()
     {
+        lastSelection = -1;
         StartCoroutine(UpdateLineRender(1));
         cam = Camera.main;
         currentSelectionPreview = Instantiate(buildingOptions[0]);
@@ -100,6 +101,7 @@ public class PlayerBuilding : MonoBehaviour
             {
                 Debug.Log("Build Mode");
                 buildMode = false;
+                showLineRender = false;
                 return;
             }
 
@@ -268,16 +270,13 @@ public class PlayerBuilding : MonoBehaviour
                     currentSelection--;
                 }
             }
+
+            Debug.Log(currentSelectionPreview); //Already Known
         }
 
         //Debug.Log("Current selection: " + currentSelection);
 
         //Debug.LogError("The current selection is not within the bounds of the array!");
-
-        if (currentSelectionPreview == null)
-        {
-            
-        }
 
         if (currentSelection != lastSelection && currentSelectionPreview)
         {
