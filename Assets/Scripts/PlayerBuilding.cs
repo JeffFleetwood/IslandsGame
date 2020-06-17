@@ -42,9 +42,18 @@ public class PlayerBuilding : MonoBehaviour
         renderer.SetPosition(1, Vector3.zero);
     }*/
 
+    bool buildMode = false;
+    bool selectionMode = false;
+    bool rotateMode = false;
+    bool scaleMode = false;
+    bool destroyMode = false;
+    bool xRotateMode = false;
+    bool yRotateMode = false;
+    bool zRotateMode = false;
+
     private void Update()
     {
-        NotRealInput();
+        GetInput();
 
         /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -67,123 +76,304 @@ public class PlayerBuilding : MonoBehaviour
         Build();*/
     }
 
-    void NotRealInput()
+    void GetInput()
     {
-        bool buildMode = false;
-        bool selectionMode = false;
-        bool rotateMode = true;
-        bool scaleMode = false;
-        bool destroyMode = false;
-        bool mode = false;
-        int progress = 0;
-
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if(!buildMode && !destroyMode)
         {
-            progress = 0;
-        }
-
-        if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            progress = 1;
-            mode = false;
-        }
-
-        if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            mode = true;
-            progress = 1;
-            Debug.Log("Menu progress: " + progress);
-            return;
-        }
-        
-        if (!selectionMode && Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            progress = 2;
-            Debug.Log("Menu progress: " + progress);
-            return;
-        }
-
-        if (!rotateMode && Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            progress = 2;
-            Debug.Log("Menu progress: " + progress);
-            return;
-        }
-
-        if (!scaleMode && Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            progress = 2;
-            Debug.Log("Menu progress: " + progress);
-            return;
-        }
-
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            if (progress < 1)
+            Debug.Log("No Modes Activated!");
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                progress--;
+                Debug.Log("Build Mode Active");
+                buildMode = true;
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.LogError("Progress can not be less than zero you fool!");
+                Debug.Log("Destroy Mode Active");
+                destroyMode = true;
             }
-        }
-
-        switch (progress)
-        {
-            case 0:
-                buildMode = false;
-                selectionMode = false;
-                rotateMode = true;
-                scaleMode = false;
-                destroyMode = false;
-                Debug.Log("Progress Values Reset!");
-                break;
-            case 1:
-                if (!mode)
-                {
-                    destroyMode = true;
-                    buildMode = false;
-                    Debug.Log("Welcome to destory mode!");
-                }
-                else
-                {
-                    destroyMode = false;
-                    buildMode = true;
-                    selectionMode = false;
-                    Debug.Log("Welcome to build mode!");
-                }
-                break;
-            case 2:
-                selectionMode = true;
-                Debug.Log("Welcome to selection mode!");
-                break;
-            default:
-                Debug.LogError("Progress is overflowing the switch!");
-                break;
+            return;
         }
 
         if (buildMode)
         {
-            //BuildModeMethodHere
-
-            if (selectionMode)
+            Debug.Log("In Build Mode");
+            if(Input.GetKeyDown(KeyCode.Mouse1) && !selectionMode && !rotateMode && !scaleMode)
             {
-                //SelectionModeMethodHere
+                Debug.Log("Build Mode");
+                buildMode = false;
+                return;
+            }
 
-                if (rotateMode)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && !rotateMode && !scaleMode && !selectionMode)
+            {
+                Debug.Log("Selection Mode");
+                selectionMode = true;
+                return;
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha2) && !selectionMode && !scaleMode && !rotateMode)
+            {
+                Debug.Log("Rotate Mode");
+                rotateMode = true;
+                return;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3) && !selectionMode && !rotateMode && !scaleMode)
+            {
+                Debug.Log("Scale Mode");
+                scaleMode = true;
+                return;
+            }
+
+            if(selectionMode)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
-                    //RotateModeCodeHere
+                    Debug.Log("Exit Selection Mode");
+                    selectionMode = false;
+                    return;
                 }
-                
-                if (scaleMode)
+
+                SelectionMode();
+            }
+
+            if(rotateMode)
+            {
+                Debug.Log("In Rotate Mode");
+                if (Input.GetKeyDown(KeyCode.Mouse1) && !xRotateMode && !yRotateMode && !zRotateMode)
                 {
-                    //ScaleModeCodeHere
+                    Debug.Log("Exit Rotate Mode");
+                    rotateMode = false;
+                    return;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha1) && !yRotateMode && !zRotateMode)
+                {
+                    Debug.Log("X Rotation Mode");
+                    xRotateMode = true;
+                    return;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha2) && !xRotateMode && !zRotateMode)
+                {
+                    Debug.Log("Y Rotation Mode");
+                    yRotateMode = true;
+                    return;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha3) && !xRotateMode && !yRotateMode)
+                {
+                    Debug.Log("Z Rotation Mode");
+                    zRotateMode = true;
+                    return;
+                }
+
+                if (xRotateMode)
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    {
+                        Debug.Log("Exit X Rotation Mode");
+                        xRotateMode = false;
+                        return;
+                    }
+                    RotateXMode();
+                }
+
+                if (yRotateMode)
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    {
+                        Debug.Log("Exit Y Rotation Mode");
+                        yRotateMode = false;
+                        return;
+                    }
+                    RotateYMode();
+                }
+
+                if (zRotateMode)
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    {
+                        Debug.Log("Exit Z Rotation Mode");
+                        zRotateMode = false;
+                        return;
+                    }
+                    RotateZMode();
+                }
+            }
+
+            if(scaleMode)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    Debug.Log("Exit Scale Mode");
+                    scaleMode = false;
+                    ScaleMode();
+                    return;
                 }
             }
         }
+        else if (destroyMode)
+        {
+            Debug.Log("IN Destroy Mode");
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                Debug.Log("Exit Destroy Mode");
+                destroyMode = false;
+                return;
+            }
 
+            DestroyMode();
+        }
     }
+
+    void SelectionMode()
+    {
+        Debug.Log("Calling Selection Mode Function");
+    }
+
+    void ScaleMode()
+    {
+        Debug.Log("Calling Scale Mode Function");
+    }
+
+    void RotateXMode()
+    {
+        Debug.Log("Calling Rotate X Mode Function");
+    }
+
+    void RotateYMode()
+    {
+        Debug.Log("Calling Rotate Y Mode Function");
+    }
+
+    void RotateZMode()
+    {
+        Debug.Log("Calling Rotate Z Mode Function");
+    }
+
+    void DestroyMode()
+    {
+        Debug.Log("Calling Destroy Mode Function");
+    }
+
+    //void NotRealInput()
+    //{
+    //    bool buildMode = false;
+    //    bool selectionMode = false;
+    //    bool rotateMode = true;
+    //    bool scaleMode = false;
+    //    bool destroyMode = false;
+    //    bool mode = false;
+    //    int progress = 0;
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha0))
+    //    {
+    //        progress = 0;
+    //    }
+
+    //    if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        progress = 1;
+    //        mode = false;
+    //    }
+
+    //    if (!destroyMode && !buildMode && Input.GetKeyDown(KeyCode.Alpha1))
+    //    {
+    //        mode = true;
+    //        progress = 1;
+    //        Debug.Log("Menu progress: " + progress);
+    //        return;
+    //    }
+        
+    //    if (!selectionMode && Input.GetKeyDown(KeyCode.Alpha1))
+    //    {
+    //        progress = 2;
+    //        Debug.Log("Menu progress: " + progress);
+    //        return;
+    //    }
+
+    //    if (!rotateMode && Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        progress = 2;
+    //        Debug.Log("Menu progress: " + progress);
+    //        return;
+    //    }
+
+    //    if (!scaleMode && Input.GetKeyDown(KeyCode.Alpha3))
+    //    {
+    //        progress = 2;
+    //        Debug.Log("Menu progress: " + progress);
+    //        return;
+    //    }
+
+    //    if (Input.GetKey(KeyCode.Alpha4))
+    //    {
+    //        if (progress < 1)
+    //        {
+    //            progress--;
+    //        }
+    //        else
+    //        {
+    //            Debug.LogError("Progress can not be less than zero you fool!");
+    //        }
+    //    }
+
+    //    switch (progress)
+    //    {
+    //        case 0:
+    //            buildMode = false;
+    //            selectionMode = false;
+    //            rotateMode = true;
+    //            scaleMode = false;
+    //            destroyMode = false;
+    //            Debug.Log("Progress Values Reset!");
+    //            break;
+    //        case 1:
+    //            if (!mode)
+    //            {
+    //                destroyMode = true;
+    //                buildMode = false;
+    //                Debug.Log("Welcome to destory mode!");
+    //            }
+    //            else
+    //            {
+    //                destroyMode = false;
+    //                buildMode = true;
+    //                selectionMode = false;
+    //                Debug.Log("Welcome to build mode!");
+    //            }
+    //            break;
+    //        case 2:
+    //            selectionMode = true;
+    //            Debug.Log("Welcome to selection mode!");
+    //            break;
+    //        default:
+    //            Debug.LogError("Progress is overflowing the switch!");
+    //            break;
+    //    }
+
+    //    if (buildMode)
+    //    {
+    //        //BuildModeMethodHere
+
+    //        if (selectionMode)
+    //        {
+    //            //SelectionModeMethodHere
+
+    //            if (rotateMode)
+    //            {
+    //                //RotateModeCodeHere
+    //            }
+                
+    //            if (scaleMode)
+    //            {
+    //                //ScaleModeCodeHere
+    //            }
+    //        }
+    //    }
+
+    //}
 
     /*void Build()
     {
