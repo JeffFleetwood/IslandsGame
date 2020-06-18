@@ -7,8 +7,7 @@ public class IslandMenu : MonoBehaviour
 {
     public Image displayimage;
     public Sprite[] IslandImages;
-    public GameObject[] IslandTemplates;
-    public int index;
+    private int index;
 
     public void Start() 
     {
@@ -33,7 +32,6 @@ public class IslandMenu : MonoBehaviour
 
     public void SelectIsland()
     {
-        Debug.Log("Works");
-        IslandTemplates[index].SetActive(true);
+        PlayerPrefs.SetInt("IslandCount", index);
     }
 }
