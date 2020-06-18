@@ -97,6 +97,19 @@ public class PlayerBuilding : MonoBehaviour
         {
             renderer.startColor = Color.red;
         }
+        
+        ResetMenu();
+    }
+
+    void ResetMenu()
+    {
+        constructionModeSelection.SetActive(!buildMode && !destroyMode);
+        buildModeSelection.SetActive(buildMode && !selectionMode && !rotateMode && !scaleMode);
+        objectSelectionMode.SetActive(buildMode && selectionMode && !rotateMode && !scaleMode);
+        rotateModeSelection.SetActive(buildMode && rotateMode && !(xRotateMode || yRotateMode || zRotateMode) && !selectionMode && !scaleMode);
+        rotationSelection.SetActive(buildMode && rotateMode && (xRotateMode || yRotateMode || zRotateMode) && !selectionMode && !scaleMode);
+        scaleSelection.SetActive(buildMode && scaleMode && !rotateMode && !selectionMode);
+        destroyModeSelection.SetActive(destroyMode && !buildMode);
     }
 
     void GetInput()
@@ -121,20 +134,18 @@ public class PlayerBuilding : MonoBehaviour
         if (buildMode)
         {
             SelectionMode();
+
             Debug.Log("In Build Mode");
 
             instructions.text = "press 1 to select an object, 2 to rotate your object, or 3 to scale your object. Press right click to go back";
 
+            //buildModeSelection.SetActive(true); // select how to manipulate your object and/or place it
+            //constructionModeSelection.SetActive(false); //Select build or destory
+
+
             if (Input.GetKeyDown(KeyCode.Mouse1) && !selectionMode && !rotateMode && !scaleMode)
             {
                 constructionModeSelection.SetActive(true); //Select build or destory
-
-                objectSelectionMode.SetActive(false); //Change what object you are placing
-                buildModeSelection.SetActive(false); //Choose how to manipulate the object
-                rotateModeSelection.SetActive(false); // Rotating Axis Selection
-                rotationSelection.SetActive(false); //Rotating the object along the selected axis
-                scaleSelection.SetActive(false); //Scaling Axis Selection
-                destroyModeSelection.SetActive(false); //Destory or go back
 
                 instructions.text = "press 1 for build mode, and 2 for destroy mode.";
 
@@ -146,12 +157,6 @@ public class PlayerBuilding : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1) && !rotateMode && !scaleMode && !selectionMode)
             {
-                buildModeSelection.SetActive(false); //Choose how to manipulate the object
-                rotationSelection.SetActive(false); //Rotating the object along the selected axis
-                scaleSelection.SetActive(false); //Scaling Axis Selection
-                destroyModeSelection.SetActive(false); //Destory or go back
-                constructionModeSelection.SetActive(false); // select to build or destroy
-                objectSelectionMode.SetActive(true); // select an object to build or change current object
 
                 Debug.Log("Selection Mode");
                 selectionMode = true;
@@ -160,8 +165,6 @@ public class PlayerBuilding : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha2) && !selectionMode && !scaleMode && !rotateMode)
             {
-                constructionModeSelection.SetActive(false);
-                rotateModeSelection.SetActive(true); // Rotating Axis Selection - XYZ
 
                 instructions.text = "press 1 to select the x axis, 2 for the y axis, and 3 for the z axis";
 
@@ -172,10 +175,8 @@ public class PlayerBuilding : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha3) && !selectionMode && !rotateMode && !scaleMode)
             {
-                constructionModeSelection.SetActive(false);
-                scaleSelection.SetActive(true);
 
-                instructions.text = "use the scroll wheel to scale your object, and left click to select a scale";
+                instructions.text = "Use the scroll wheel to scale your object, and left click to select a scale";
 
                 Debug.Log("Scale Mode");
                 scaleMode = true;
@@ -185,7 +186,7 @@ public class PlayerBuilding : MonoBehaviour
             if (selectionMode)
             {
                 scrollable = true;
-                if (Input.GetKeyDown(KeyCode.Mouse1))
+                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     Debug.Log("Exit Selection Mode");
                     scrollable = false;
@@ -229,7 +230,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 if (xRotateMode)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         Debug.Log("Exit X Rotation Mode");
                         xRotateMode = false;
@@ -240,7 +241,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 if (yRotateMode)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         Debug.Log("Exit Y Rotation Mode");
                         yRotateMode = false;
@@ -251,7 +252,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 if (zRotateMode)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         Debug.Log("Exit Z Rotation Mode");
                         zRotateMode = false;
@@ -263,7 +264,7 @@ public class PlayerBuilding : MonoBehaviour
 
             if (scaleMode)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse1))
+                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     Debug.Log("Exit Scale Mode");
                     scaleMode = false;
@@ -330,7 +331,7 @@ public class PlayerBuilding : MonoBehaviour
             Debug.Log(currentSelectionPreview); //Already Known
         }
 
-        //Debug.Log("Current selection: " + currentSelection);
+        //Debug.Log("Current selection: " + currentSelection); 
 
         //Debug.LogError("The current selection is not within the bounds of the array!");
 
