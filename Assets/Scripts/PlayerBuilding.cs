@@ -103,6 +103,8 @@ public class PlayerBuilding : MonoBehaviour
 
     void ResetMenu()
     {
+        currentSelectionPreview.SetActive(buildMode);
+        showLineRender = (buildMode || destroyMode);
         constructionModeSelection.SetActive(!buildMode && !destroyMode);
         buildModeSelection.SetActive(buildMode && !selectionMode && !rotateMode && !scaleMode);
         objectSelectionMode.SetActive(buildMode && selectionMode && !rotateMode && !scaleMode);
@@ -115,6 +117,11 @@ public class PlayerBuilding : MonoBehaviour
     void GetInput()
 
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !destroyMode && buildMode)
+        {
+            Stamp();
+        }
+
         if (!buildMode && !destroyMode)
         {
             Debug.Log("No Modes Activated!");
@@ -151,7 +158,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 Debug.Log("Build Mode");
                 buildMode = false;
-                showLineRender = false;
+                //showLineRender = false;
                 return;
             }
 
@@ -276,13 +283,15 @@ public class PlayerBuilding : MonoBehaviour
         else if (destroyMode)
         {
             Debug.Log("IN Destroy Mode");
+            renderer.startColor = Color.red;
+            //showLineRender = true;
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 Debug.Log("Exit Destroy Mode");
                 destroyMode = false;
                 return;
             }
-
+            
             DestroyMode();
         }
     }
@@ -301,7 +310,7 @@ public class PlayerBuilding : MonoBehaviour
 
         renderPos1 = transform.position;
         renderPos2 = hit.point;
-        showLineRender = true;
+        //showLineRender = true;
 
         if (scrollable)
         {
@@ -366,6 +375,27 @@ public class PlayerBuilding : MonoBehaviour
     void DestroyMode()
     {
         Debug.Log("Calling Destroy Mode Function");
+
+        RaycastHit hit;
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+
+        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
+        {
+            //renderer.SetPosition(0, transform.position + new Vector3(0, 1f, 0));
+            //renderer.SetPosition(1, hit.point);
+
+            renderPos1 = cam.transform.position + new Vector3(0, -2f, 0);
+            renderPos2 = hit.point;
+
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+
+                if (hit.collider.gameObject.tag == "DestroyMe")
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+            }
+        }
     }
 
     void Preview(int index, int lastIndex, Vector3 hit)
@@ -392,97 +422,15 @@ public class PlayerBuilding : MonoBehaviour
         }
     }
 
-    /*void Build()
+    void Stamp()
     {
+        Vector3 pos = currentSelectionPreview.transform.position;
+        Quaternion rot = currentSelectionPreview.transform.rotation;
+        Vector3 scale = currentSelectionPreview.transform.localScale;
 
-        if (destroyModeActive)
-        {
-            DestroyObject();
-        }
+        GameObject buildObject = Instantiate(buildingOptions[currentSelection], pos, rot);
+        buildObject.transform.localScale = scale;
     }
-
-    void DestroyObject()
-    {
-        RaycastHit hit;
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-
-        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
-        {
-            renderer.SetPosition(0, transform.position + new Vector3(0, 1f, 0));
-            renderer.SetPosition(1, hit.point);
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-
-                if (hit.collider.gameObject.tag == "DestroyMe")
-                {
-                    Destroy(hit.collider.gameObject);
-                }
-            }
-        }
-    }*/
-
-    /*void CreateBuildPiece()
-    {
-        RaycastHit hit;
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
-        {
-            renderer.SetPosition(0, transform.position + new Vector3(0, 1f, 0));
-            renderer.SetPosition(1, hit.point);
-
-            if (currentSelectionPreview)
-            {
-
-                if (useNormal)
-                    currentSelectionPreview.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                else
-                    currentSelectionPreview.transform.rotation = Quaternion.Euler(Vector3.up);
-
-                RotatePiece();
-            }
-
-            if (useHoldMech)
-            {
-                if (Input.GetKey(KeyCode.Mouse0))
-                {
-
-                    if (hit.collider.gameObject.tag != "DestroyMe")
-                    {
-                        if (clones < maxClones)
-                        {
-                            if (previousPos != hit.point)
-                            {
-                                Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
-                            }
-                            previousPos = hit.point;
-                            clones++;
-                        }
-
-                    }
-                }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    Instantiate(buildingOptions[currentSelection], hit.point, currentSelectionPreview.transform.rotation);
-                }
-            }
-            
-        }
-    }
-
-    void RotatePiece()
-    {
-        scrollWheel += Input.mouseScrollDelta.y;
-
-        if (currentSelectionPreview)
-        {
-            currentSelectionPreview.transform.Rotate(Vector3.up, scrollWheel * rotateSpeed);
-        }
-
-    }*/
 
     IEnumerator UpdateLineRender(int updateDelay)
     {
