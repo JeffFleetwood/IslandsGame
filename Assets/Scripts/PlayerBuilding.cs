@@ -100,6 +100,7 @@ public class PlayerBuilding : MonoBehaviour
     }
 
     void GetInput()
+
     {
         if (!buildMode && !destroyMode)
         {
