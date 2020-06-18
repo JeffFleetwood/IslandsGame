@@ -23,6 +23,8 @@ public class PlayerBuilding : MonoBehaviour
     public GameObject scaleSelection;
     public GameObject destroyModeSelection;
 
+    public Text instructions;
+
     bool useNormal = true;
 
     int clones;
@@ -36,9 +38,23 @@ public class PlayerBuilding : MonoBehaviour
     Camera cam;
     GameObject currentSelectionPreview;
     GameObject lastSelectionPreview;
+    
+    private void Awake()
+    {
+        constructionModeSelection.SetActive(true); //Select build or destory
+        objectSelectionMode.SetActive(false); //Change what object you are placing
+        buildModeSelection.SetActive(false); //Choose how to manipulate the object
+        rotateModeSelection.SetActive(false); // Rotating Axis Selection
+        rotationSelection.SetActive(false); //Rotating the object along the selected axis
+        scaleSelection.SetActive(false); //Scaling Axis Selection
+        destroyModeSelection.SetActive(false); //Destory or go back
+
+        instructions.text = "press 1 for build mode, and 2 for destroy mode. ";
+    }
 
     private void Start()
     {
+
         lastSelection = -1;
         StartCoroutine(UpdateLineRender(1));
         cam = Camera.main;
@@ -105,8 +121,22 @@ public class PlayerBuilding : MonoBehaviour
         {
             SelectionMode();
             Debug.Log("In Build Mode");
+
+            instructions.text = "press 1 to select an object, 2 to rotate your object, or 3 to scale your object. Press right click to go back";
+
             if (Input.GetKeyDown(KeyCode.Mouse1) && !selectionMode && !rotateMode && !scaleMode)
             {
+                constructionModeSelection.SetActive(true); //Select build or destory
+
+                objectSelectionMode.SetActive(false); //Change what object you are placing
+                buildModeSelection.SetActive(false); //Choose how to manipulate the object
+                rotateModeSelection.SetActive(false); // Rotating Axis Selection
+                rotationSelection.SetActive(false); //Rotating the object along the selected axis
+                scaleSelection.SetActive(false); //Scaling Axis Selection
+                destroyModeSelection.SetActive(false); //Destory or go back
+
+                instructions.text = "press 1 for build mode, and 2 for destroy mode.";
+
                 Debug.Log("Build Mode");
                 buildMode = false;
                 showLineRender = false;
@@ -115,6 +145,13 @@ public class PlayerBuilding : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1) && !rotateMode && !scaleMode && !selectionMode)
             {
+                buildModeSelection.SetActive(false); //Choose how to manipulate the object
+                rotationSelection.SetActive(false); //Rotating the object along the selected axis
+                scaleSelection.SetActive(false); //Scaling Axis Selection
+                destroyModeSelection.SetActive(false); //Destory or go back
+                constructionModeSelection.SetActive(false); // select to build or destroy
+                objectSelectionMode.SetActive(true); // select an object to build or change current object
+
                 Debug.Log("Selection Mode");
                 selectionMode = true;
                 return;
@@ -122,6 +159,11 @@ public class PlayerBuilding : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha2) && !selectionMode && !scaleMode && !rotateMode)
             {
+                constructionModeSelection.SetActive(false);
+                rotateModeSelection.SetActive(true); // Rotating Axis Selection - XYZ
+
+                instructions.text = "press 1 to select the x axis, 2 for the y axis, and 3 for the z axis";
+
                 Debug.Log("Rotate Mode");
                 rotateMode = true;
                 return;
@@ -129,6 +171,11 @@ public class PlayerBuilding : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha3) && !selectionMode && !rotateMode && !scaleMode)
             {
+                constructionModeSelection.SetActive(false);
+                scaleSelection.SetActive(true);
+
+                instructions.text = "use the scroll wheel to scale your object, and left click to select a scale";
+
                 Debug.Log("Scale Mode");
                 scaleMode = true;
                 return;
