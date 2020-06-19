@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 2759178209138058760, guid: c8fbbdd54c26e144aace936c177c1cc5,
         type: 3}
       propertyPath: m_Name
-      value: Mountainous Isand
+      value: Island Template 7
       objectReference: {fileID: 0}
     - target: {fileID: 2759178209138058760, guid: c8fbbdd54c26e144aace936c177c1cc5,
         type: 3}
@@ -200,6 +200,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 105217943}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &105217945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2759178209138058760, guid: c8fbbdd54c26e144aace936c177c1cc5,
+    type: 3}
+  m_PrefabInstance: {fileID: 105217943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &179010538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -265,7 +271,7 @@ PrefabInstance:
     - target: {fileID: 2853183216778045469, guid: 179cc6aeefe27d445a3a525a1c1d012e,
         type: 3}
       propertyPath: m_Name
-      value: Terrain Template 6
+      value: Island Template 10
       objectReference: {fileID: 0}
     - target: {fileID: 2853183216778045469, guid: 179cc6aeefe27d445a3a525a1c1d012e,
         type: 3}
@@ -277,6 +283,12 @@ PrefabInstance:
 --- !u!4 &179010539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2853183216778045464, guid: 179cc6aeefe27d445a3a525a1c1d012e,
+    type: 3}
+  m_PrefabInstance: {fileID: 179010538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &179010540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2853183216778045469, guid: 179cc6aeefe27d445a3a525a1c1d012e,
     type: 3}
   m_PrefabInstance: {fileID: 179010538}
   m_PrefabAsset: {fileID: 0}
@@ -345,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 1682112304661604180, guid: 7fda23802e56ddc49bd3ca6014225ea1,
         type: 3}
       propertyPath: m_Name
-      value: Lava Land
+      value: Island Template 5
       objectReference: {fileID: 0}
     - target: {fileID: 1682112304661604180, guid: 7fda23802e56ddc49bd3ca6014225ea1,
         type: 3}
@@ -357,6 +369,12 @@ PrefabInstance:
 --- !u!4 &348108100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1682112304661604177, guid: 7fda23802e56ddc49bd3ca6014225ea1,
+    type: 3}
+  m_PrefabInstance: {fileID: 348108099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &348108101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1682112304661604180, guid: 7fda23802e56ddc49bd3ca6014225ea1,
     type: 3}
   m_PrefabInstance: {fileID: 348108099}
   m_PrefabAsset: {fileID: 0}
@@ -431,6 +449,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727553502654597098, guid: fa909175baec90543abac8ce5cbd0bc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6727553502654597102, guid: fa909175baec90543abac8ce5cbd0bc7,
         type: 3}
@@ -698,7 +721,7 @@ PrefabInstance:
     - target: {fileID: 7476937078186074251, guid: 0b0348f8008eeac4aa4a4ad8bc2c57d3,
         type: 3}
       propertyPath: m_Name
-      value: Ice Land
+      value: Island Template 4
       objectReference: {fileID: 0}
     - target: {fileID: 7476937078186074251, guid: 0b0348f8008eeac4aa4a4ad8bc2c57d3,
         type: 3}
@@ -713,7 +736,7 @@ PrefabInstance:
     - target: {fileID: 7476937078186074294, guid: 0b0348f8008eeac4aa4a4ad8bc2c57d3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 7476937078186074294, guid: 0b0348f8008eeac4aa4a4ad8bc2c57d3,
         type: 3}
@@ -768,6 +791,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 832219809}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &832219811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7476937078186074251, guid: 0b0348f8008eeac4aa4a4ad8bc2c57d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 832219809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &933151639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -778,12 +807,17 @@ PrefabInstance:
     - target: {fileID: 6981290897074204993, guid: a355c00267023cc44b4d64caad1ad1b3,
         type: 3}
       propertyPath: m_Name
-      value: Terrain Template 7
+      value: Island Template 11
       objectReference: {fileID: 0}
     - target: {fileID: 6981290897074204993, guid: a355c00267023cc44b4d64caad1ad1b3,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981290897074204993, guid: a355c00267023cc44b4d64caad1ad1b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6981290897074205020, guid: a355c00267023cc44b4d64caad1ad1b3,
         type: 3}
@@ -848,6 +882,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 933151639}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &933151641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6981290897074204993, guid: a355c00267023cc44b4d64caad1ad1b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 933151639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1061890272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -858,7 +898,7 @@ PrefabInstance:
     - target: {fileID: 2001818725260907536, guid: f28c58557a945644b97250c8a81b1ecb,
         type: 3}
       propertyPath: m_Name
-      value: Glass Land
+      value: Island Template 3
       objectReference: {fileID: 0}
     - target: {fileID: 2001818725260907536, guid: f28c58557a945644b97250c8a81b1ecb,
         type: 3}
@@ -925,6 +965,12 @@ PrefabInstance:
 --- !u!4 &1061890273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2001818725260907565, guid: f28c58557a945644b97250c8a81b1ecb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1061890272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061890274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2001818725260907536, guid: f28c58557a945644b97250c8a81b1ecb,
     type: 3}
   m_PrefabInstance: {fileID: 1061890272}
   m_PrefabAsset: {fileID: 0}
@@ -1042,6 +1088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7726281432159702722, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
         type: 3}
       propertyPath: objectSelectionMode
@@ -1108,6 +1159,61 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14.159995, y: 0, z: 14.159991}
   m_Center: {x: -0.0000023841858, y: 0, z: 0.0000023841858}
+--- !u!1 &1364915735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1364915737}
+  - component: {fileID: 1364915736}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1364915736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364915735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99786e2cbb3c504fb01f069167d2b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islands:
+  - {fileID: 1966172014}
+  - {fileID: 2035311993}
+  - {fileID: 1061890274}
+  - {fileID: 832219811}
+  - {fileID: 348108101}
+  - {fileID: 2104285594}
+  - {fileID: 105217945}
+  - {fileID: 1485763602}
+  - {fileID: 1481416533}
+  - {fileID: 179010540}
+  - {fileID: 933151641}
+--- !u!4 &1364915737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364915735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1481416531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1118,12 +1224,17 @@ PrefabInstance:
     - target: {fileID: 5066542455645077337, guid: 74d7bf4927c9d224781366fbfedd6f77,
         type: 3}
       propertyPath: m_Name
-      value: Simple Island 1
+      value: Island Template 9
       objectReference: {fileID: 0}
     - target: {fileID: 5066542455645077337, guid: 74d7bf4927c9d224781366fbfedd6f77,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066542455645077337, guid: 74d7bf4927c9d224781366fbfedd6f77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5066542455645077340, guid: 74d7bf4927c9d224781366fbfedd6f77,
         type: 3}
@@ -1185,6 +1296,12 @@ PrefabInstance:
 --- !u!4 &1481416532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5066542455645077340, guid: 74d7bf4927c9d224781366fbfedd6f77,
+    type: 3}
+  m_PrefabInstance: {fileID: 1481416531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1481416533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5066542455645077337, guid: 74d7bf4927c9d224781366fbfedd6f77,
     type: 3}
   m_PrefabInstance: {fileID: 1481416531}
   m_PrefabAsset: {fileID: 0}
@@ -1253,7 +1370,7 @@ PrefabInstance:
     - target: {fileID: 5439872543410475705, guid: 092c4dd3704986243a4efbec61ba5a8a,
         type: 3}
       propertyPath: m_Name
-      value: Mountains
+      value: Island Template 8
       objectReference: {fileID: 0}
     - target: {fileID: 5439872543410475705, guid: 092c4dd3704986243a4efbec61ba5a8a,
         type: 3}
@@ -1265,6 +1382,12 @@ PrefabInstance:
 --- !u!4 &1485763601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5439872543410475700, guid: 092c4dd3704986243a4efbec61ba5a8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1485763600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1485763602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5439872543410475705, guid: 092c4dd3704986243a4efbec61ba5a8a,
     type: 3}
   m_PrefabInstance: {fileID: 1485763600}
   m_PrefabAsset: {fileID: 0}
@@ -1375,7 +1498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1383,7 +1506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -222
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1439,12 +1562,12 @@ PrefabInstance:
     - target: {fileID: 8275555154569406050, guid: 538cc47c2a317654586b63888574c611,
         type: 3}
       propertyPath: m_Name
-      value: Base Sand Island
+      value: Island Template 1
       objectReference: {fileID: 0}
     - target: {fileID: 8275555154569406050, guid: 538cc47c2a317654586b63888574c611,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8275555154569406063, guid: 538cc47c2a317654586b63888574c611,
         type: 3}
@@ -1509,6 +1632,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1966172012}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1966172014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8275555154569406050, guid: 538cc47c2a317654586b63888574c611,
+    type: 3}
+  m_PrefabInstance: {fileID: 1966172012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2035311991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1519,7 +1648,7 @@ PrefabInstance:
     - target: {fileID: 2595622323998865553, guid: d16c268c9d824544bb05598e307a16f1,
         type: 3}
       propertyPath: m_Name
-      value: Alt Eiche
+      value: Island Template 2
       objectReference: {fileID: 0}
     - target: {fileID: 2595622323998865553, guid: d16c268c9d824544bb05598e307a16f1,
         type: 3}
@@ -1589,6 +1718,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2035311991}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2035311993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2595622323998865553, guid: d16c268c9d824544bb05598e307a16f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2035311991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2104285592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1654,7 +1789,7 @@ PrefabInstance:
     - target: {fileID: 8881352278279482330, guid: 60b1b26b376c6984a8fe931e93f186ac,
         type: 3}
       propertyPath: m_Name
-      value: Moon
+      value: Island Template 6
       objectReference: {fileID: 0}
     - target: {fileID: 8881352278279482330, guid: 60b1b26b376c6984a8fe931e93f186ac,
         type: 3}
@@ -1666,6 +1801,12 @@ PrefabInstance:
 --- !u!4 &2104285593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8881352278279482329, guid: 60b1b26b376c6984a8fe931e93f186ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2104285592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2104285594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8881352278279482330, guid: 60b1b26b376c6984a8fe931e93f186ac,
     type: 3}
   m_PrefabInstance: {fileID: 2104285592}
   m_PrefabAsset: {fileID: 0}

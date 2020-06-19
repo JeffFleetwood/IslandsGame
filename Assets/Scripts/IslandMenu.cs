@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class IslandMenu : MonoBehaviour
 {
@@ -39,5 +40,6 @@ public class IslandMenu : MonoBehaviour
     public void SelectIsland()
     {
         PlayerPrefs.SetInt("IslandCount", index); //saves a value that can be used to determine what island to spawn in
+        SceneManager.LoadScene(1);
     }
 }
