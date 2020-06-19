@@ -115,7 +115,6 @@ public class PlayerBuilding : MonoBehaviour
     }
 
     void GetInput()
-
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !destroyMode && buildMode)
         {
