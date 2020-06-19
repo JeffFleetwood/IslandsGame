@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4234469878775624}
   - component: {fileID: 33554901756996656}
   - component: {fileID: 23581030025020972}
+  - component: {fileID: 9029912480974244190}
   m_Layer: 8
   m_Name: Umbrella_LOD2
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +55,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +81,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &9029912480974244190
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023886695367278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: 749893d2eefe544fa9e84282bae1e34c, type: 3}
 --- !u!1 &1456231479800488
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,9 +106,10 @@ GameObject:
   - component: {fileID: 4692828947511952}
   - component: {fileID: 33041313634461460}
   - component: {fileID: 23708602129508920}
+  - component: {fileID: 2246893013362464018}
   m_Layer: 8
   m_Name: Umbrella_LOD3
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +150,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -162,6 +176,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2246893013362464018
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456231479800488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 749893d2eefe544fa9e84282bae1e34c, type: 3}
 --- !u!1 &1524050330584550
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,9 +201,10 @@ GameObject:
   - component: {fileID: 4646342560425202}
   - component: {fileID: 33687560510524024}
   - component: {fileID: 23533219775645638}
+  - component: {fileID: 626097476371117448}
   m_Layer: 8
   m_Name: Umbrella_LOD1
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +245,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -243,6 +271,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &626097476371117448
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524050330584550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: 749893d2eefe544fa9e84282bae1e34c, type: 3}
 --- !u!1 &1662349790462050
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,9 +296,10 @@ GameObject:
   - component: {fileID: 4476484391744400}
   - component: {fileID: 33336646491126418}
   - component: {fileID: 23421062591475674}
+  - component: {fileID: 4126893680133396786}
   m_Layer: 8
   m_Name: Umbrella_LOD0
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,7 +340,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -324,6 +366,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4126893680133396786
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662349790462050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: 749893d2eefe544fa9e84282bae1e34c, type: 3}
 --- !u!1 &1877819836946206
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +392,7 @@ GameObject:
   - component: {fileID: 205698286168805406}
   m_Layer: 8
   m_Name: Umbrella
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4370479232329552}
   - component: {fileID: 33458739912432358}
   - component: {fileID: 23859903992725334}
+  - component: {fileID: 8506829938657164603}
   m_Layer: 8
   m_Name: Volleyball_LOD3
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +55,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +79,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8506829938657164603
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044208822074652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: c71923256946c49c593eeeb3adb0590b, type: 3}
 --- !u!1 &1130109660404180
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +104,10 @@ GameObject:
   - component: {fileID: 4697115402512880}
   - component: {fileID: 33345467479467906}
   - component: {fileID: 23773724923466302}
+  - component: {fileID: 8449297355527306276}
   m_Layer: 8
   m_Name: Volleyball_LOD1
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +148,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -158,6 +172,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8449297355527306276
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130109660404180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: c71923256946c49c593eeeb3adb0590b, type: 3}
 --- !u!1 &1455123214632412
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,9 +197,10 @@ GameObject:
   - component: {fileID: 4533512060787054}
   - component: {fileID: 33781521781688912}
   - component: {fileID: 23232496686841924}
+  - component: {fileID: 6728753219344591585}
   m_Layer: 8
   m_Name: Volleyball_LOD2
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,7 +241,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -237,6 +265,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6728753219344591585
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455123214632412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: c71923256946c49c593eeeb3adb0590b, type: 3}
 --- !u!1 &1475520680849162
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,9 +290,10 @@ GameObject:
   - component: {fileID: 4977134114513820}
   - component: {fileID: 33411599340013896}
   - component: {fileID: 23321579276926554}
+  - component: {fileID: 6967363654236751986}
   m_Layer: 8
   m_Name: Volleyball_LOD0
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,7 +334,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -316,6 +358,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6967363654236751986
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475520680849162}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: c71923256946c49c593eeeb3adb0590b, type: 3}
 --- !u!1 &1878976330372524
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +384,7 @@ GameObject:
   - component: {fileID: 205874038137079614}
   m_Layer: 8
   m_Name: Old Volleyball
-  m_TagString: Untagged
+  m_TagString: DestroyMe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
