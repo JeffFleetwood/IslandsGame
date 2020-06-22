@@ -197,7 +197,7 @@ public class PlayerBuilding : MonoBehaviour
             if (selectionMode)
             {
                 scrollable = true;
-                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+                if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     Debug.Log("Exit Selection Mode");
                     scrollable = false;
@@ -241,7 +241,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 if (xRotateMode)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+                    if  (Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         Debug.Log("Exit X Rotation Mode");
                         xRotateMode = false;
@@ -252,7 +252,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 if (yRotateMode)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+                    if  (Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         Debug.Log("Exit Y Rotation Mode");
                         yRotateMode = false;
@@ -263,7 +263,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 if (zRotateMode)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+                    if  (Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         Debug.Log("Exit Z Rotation Mode");
                         zRotateMode = false;
@@ -275,7 +275,7 @@ public class PlayerBuilding : MonoBehaviour
 
             if (scaleMode)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+                if  (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     Debug.Log("Exit Scale Mode");
                     scaleMode = false;
