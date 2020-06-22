@@ -24,6 +24,7 @@ public class PlayerBuilding : MonoBehaviour
     public GameObject destroyModeSelection;
 
     public Text instructions;
+    public float rotSpeed;
 
     bool useNormal = true;
 
@@ -339,10 +340,6 @@ public class PlayerBuilding : MonoBehaviour
             Debug.Log(currentSelectionPreview); //Already Known
         }
 
-        //Debug.Log("Current selection: " + currentSelection); 
-
-        //Debug.LogError("The current selection is not within the bounds of the array!");
-
         if (currentSelection != lastSelection && currentSelectionPreview)
         {
             Preview(currentSelection, lastSelection, hit.point);
@@ -358,17 +355,24 @@ public class PlayerBuilding : MonoBehaviour
 
     void RotateXMode()
     {
-        Debug.Log("Calling Rotate X Mode Function");
+        float rotX = Input.GetAxisRaw("Mouse ScrollWheel");
+        Debug.Log(rotX);
+        currentSelectionPreview.transform.Rotate(rotX * rotSpeed, 0f, 0F);
     }
 
     void RotateYMode()
     {
-        Debug.Log("Calling Rotate Y Mode Function");
+        float rotY = Input.GetAxisRaw("Mouse ScrollWheel");
+
+        Debug.Log(rotY);
+        currentSelectionPreview.transform.Rotate(0f, rotY * rotSpeed, 0F);
     }
 
     void RotateZMode()
     {
-        Debug.Log("Calling Rotate Z Mode Function");
+        float rotZ = Input.GetAxisRaw("Mouse ScrollWheel");
+        Debug.Log(rotZ);
+        currentSelectionPreview.transform.Rotate(0f, 0f, rotZ * rotSpeed);
     }
 
     void DestroyMode()
@@ -448,5 +452,4 @@ public class PlayerBuilding : MonoBehaviour
             yield return new WaitForSeconds(updateDelay / 100);
         }
     }
-
 }

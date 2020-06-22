@@ -2332,6 +2332,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2182812894288808136, guid: dbfdc630c7a20f443832afc5aff84c73,
         type: 3}
+    - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: rotSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7726281432159702727, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
         type: 3}
       propertyPath: m_SlopeLimit
