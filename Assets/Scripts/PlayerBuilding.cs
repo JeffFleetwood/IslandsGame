@@ -14,6 +14,11 @@ public class PlayerBuilding : MonoBehaviour
     public float smoothSpeed = 75f;
     public int maxClones;
     public bool useHoldMech;
+   
+    [Space,Header ("Object Scaling")]
+    public float scaleSpeed = 10;
+    public float maxScale = 15;
+    public float minScale = 0.1f;
     [Header("UI Menu's")]
     public GameObject constructionModeSelection;
     public GameObject buildModeSelection;
@@ -24,7 +29,6 @@ public class PlayerBuilding : MonoBehaviour
     public GameObject destroyModeSelection;
 
     public Text instructions;
-    public float rotSpeed;
 
     bool useNormal = true;
 
@@ -201,7 +205,7 @@ public class PlayerBuilding : MonoBehaviour
                     return;
                 }
 
-                SelectionMode();
+                //SelectionMode();
             }
 
             if (rotateMode)
@@ -275,9 +279,9 @@ public class PlayerBuilding : MonoBehaviour
                 {
                     Debug.Log("Exit Scale Mode");
                     scaleMode = false;
-                    ScaleMode();
                     return;
                 }
+                ScaleMode();
             }
         }
         else if (destroyMode)
@@ -297,19 +301,12 @@ public class PlayerBuilding : MonoBehaviour
     }
     void SelectionMode()
     {
-        RaycastHit hit;
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
-        {
-            currentSelectionPreview.transform.position = hit.point;
-        }
+      
 
         Debug.Log("Calling Selection Mode Function");
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        renderPos1 = transform.position;
-        renderPos2 = hit.point;
         //showLineRender = true;
 
         if (scrollable)
@@ -340,9 +337,12 @@ public class PlayerBuilding : MonoBehaviour
             Debug.Log(currentSelectionPreview); //Already Known
         }
 
+        //Debug.Log("Current selection: " + currentSelection); 
+
+        //Debug.LogError("The current selection is not within the bounds of the array!");
+
         if (currentSelection != lastSelection && currentSelectionPreview)
         {
-            Preview(currentSelection, lastSelection, hit.point);
             lastSelection = currentSelection;
             lastSelectionPreview = currentSelectionPreview;
         }
@@ -350,29 +350,26 @@ public class PlayerBuilding : MonoBehaviour
 
     void ScaleMode()
     {
-        Debug.Log("Calling Scale Mode Function");
+        float mouseWheelInput = Input.mouseScrollDelta.y;
+        mouseWheelInput *= scaleSpeed*Time.deltaTime;
+        currentSelectionPreview.transform.localScale += Vector3.one*mouseWheelInput;
+        currentSelectionPreview.transform.localScale = new Vector3(Mathf.Clamp(currentSelectionPreview.transform.localScale.x, minScale, maxScale), Mathf.Clamp(currentSelectionPreview.transform.localScale.y, minScale, maxScale), Mathf.Clamp(currentSelectionPreview.transform.localScale.z, minScale, maxScale));
+        
     }
 
     void RotateXMode()
     {
-        float rotX = Input.GetAxisRaw("Mouse ScrollWheel");
-        Debug.Log(rotX);
-        currentSelectionPreview.transform.Rotate(rotX * rotSpeed, 0f, 0F);
+        Debug.Log("Calling Rotate X Mode Function");
     }
 
     void RotateYMode()
     {
-        float rotY = Input.GetAxisRaw("Mouse ScrollWheel");
-
-        Debug.Log(rotY);
-        currentSelectionPreview.transform.Rotate(0f, rotY * rotSpeed, 0F);
+        Debug.Log("Calling Rotate Y Mode Function");
     }
 
     void RotateZMode()
     {
-        float rotZ = Input.GetAxisRaw("Mouse ScrollWheel");
-        Debug.Log(rotZ);
-        currentSelectionPreview.transform.Rotate(0f, 0f, rotZ * rotSpeed);
+        Debug.Log("Calling Rotate Z Mode Function");
     }
 
     void DestroyMode()
@@ -401,27 +398,36 @@ public class PlayerBuilding : MonoBehaviour
         }
     }
 
-    void Preview(int index, int lastIndex, Vector3 hit)
+    void Preview()
     {
         if (lastSelectionPreview)
         {
             Destroy(lastSelectionPreview);
         }
 
-        currentSelectionPreview = Instantiate(buildingOptions[index], hit, Quaternion.identity);
-
-        List<Collider> colliders = new List<Collider>();
-
-        colliders.Add(currentSelectionPreview.GetComponent<Collider>());
-
-        foreach (Collider collider in currentSelectionPreview.GetComponentsInChildren<Collider>())
+        RaycastHit hit;
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
         {
-            colliders.Add(collider);
-        }
+            renderPos1 = transform.position;
+            renderPos2 = hit.point;
 
-        foreach (Collider collider1 in colliders)
-        {
-            Destroy(collider1);
+            currentSelectionPreview.transform.position = hit.point;
+            currentSelectionPreview = Instantiate(buildingOptions[currentSelection], hit.point, Quaternion.identity);
+
+            List<Collider> colliders = new List<Collider>();
+
+            colliders.Add(currentSelectionPreview.GetComponent<Collider>());
+
+            foreach (Collider collider in currentSelectionPreview.GetComponentsInChildren<Collider>())
+            {
+                colliders.Add(collider);
+            }
+
+            foreach (Collider collider1 in colliders)
+            {
+                Destroy(collider1);
+            }
         }
     }
 
@@ -452,4 +458,5 @@ public class PlayerBuilding : MonoBehaviour
             yield return new WaitForSeconds(updateDelay / 100);
         }
     }
+
 }
