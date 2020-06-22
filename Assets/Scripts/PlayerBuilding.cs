@@ -14,6 +14,11 @@ public class PlayerBuilding : MonoBehaviour
     public float smoothSpeed = 75f;
     public int maxClones;
     public bool useHoldMech;
+   
+    [Space,Header ("Object Scaling")]
+    public float scaleSpeed = 10;
+    public float maxScale = 15;
+    public float minScale = 0.1f;
     [Header("UI Menu's")]
     public GameObject constructionModeSelection;
     public GameObject buildModeSelection;
@@ -274,9 +279,9 @@ public class PlayerBuilding : MonoBehaviour
                 {
                     Debug.Log("Exit Scale Mode");
                     scaleMode = false;
-                    ScaleMode();
                     return;
                 }
+                ScaleMode();
             }
         }
         else if (destroyMode)
@@ -353,7 +358,11 @@ public class PlayerBuilding : MonoBehaviour
 
     void ScaleMode()
     {
-        Debug.Log("Calling Scale Mode Function");
+        float mouseWheelInput = Input.mouseScrollDelta.y;
+        mouseWheelInput *= scaleSpeed*Time.deltaTime;
+        currentSelectionPreview.transform.localScale += Vector3.one*mouseWheelInput;
+        currentSelectionPreview.transform.localScale = new Vector3(Mathf.Clamp(currentSelectionPreview.transform.localScale.x, minScale, maxScale), Mathf.Clamp(currentSelectionPreview.transform.localScale.y, minScale, maxScale), Mathf.Clamp(currentSelectionPreview.transform.localScale.z, minScale, maxScale));
+        
     }
 
     void RotateXMode()
