@@ -14,6 +14,9 @@ public class PlayerBuilding : MonoBehaviour
     public float smoothSpeed = 75f;
     public int maxClones;
     public bool useHoldMech;
+
+    [Space, Header("Object Rotation")]
+    public float rotSpeed = 250;
    
     [Space,Header ("Object Scaling")]
     public float scaleSpeed = 10;
@@ -352,24 +355,27 @@ public class PlayerBuilding : MonoBehaviour
     {
         float mouseWheelInput = Input.mouseScrollDelta.y;
         mouseWheelInput *= scaleSpeed*Time.deltaTime;
-        currentSelectionPreview.transform.localScale += Vector3.one*mouseWheelInput;
+        currentSelectionPreview.transform.localScale += Vector3.one * mouseWheelInput;
         currentSelectionPreview.transform.localScale = new Vector3(Mathf.Clamp(currentSelectionPreview.transform.localScale.x, minScale, maxScale), Mathf.Clamp(currentSelectionPreview.transform.localScale.y, minScale, maxScale), Mathf.Clamp(currentSelectionPreview.transform.localScale.z, minScale, maxScale));
         
     }
 
     void RotateXMode()
     {
-        Debug.Log("Calling Rotate X Mode Function");
+        float mouseWheelInput = Input.mouseScrollDelta.y;
+        currentSelectionPreview.transform.Rotate(mouseWheelInput * rotSpeed * Time.deltaTime, 0, 0);
     }
 
     void RotateYMode()
     {
-        Debug.Log("Calling Rotate Y Mode Function");
+        float mouseWheelInput = Input.mouseScrollDelta.y;
+        currentSelectionPreview.transform.Rotate(0, mouseWheelInput * rotSpeed * Time.deltaTime, 0);
     }
 
     void RotateZMode()
     {
-        Debug.Log("Calling Rotate Z Mode Function");
+        float mouseWheelInput = Input.mouseScrollDelta.y;
+        currentSelectionPreview.transform.Rotate(0, 0, mouseWheelInput * rotSpeed * Time.deltaTime);
     }
 
     void DestroyMode()
