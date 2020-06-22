@@ -144,7 +144,7 @@ public class PlayerBuilding : MonoBehaviour
 
         if (buildMode)
         {
-            SelectionMode();
+            Preview();
 
             Debug.Log("In Build Mode");
 
@@ -205,7 +205,7 @@ public class PlayerBuilding : MonoBehaviour
                     return;
                 }
 
-                //SelectionMode();
+                SelectionMode();
             }
 
             if (rotateMode)
@@ -400,20 +400,10 @@ public class PlayerBuilding : MonoBehaviour
 
     void Preview()
     {
-        if (lastSelectionPreview)
+        if (lastSelectionPreview == currentSelectionPreview)
         {
             Destroy(lastSelectionPreview);
-        }
-
-        RaycastHit hit;
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
-        {
-            renderPos1 = transform.position;
-            renderPos2 = hit.point;
-
-            currentSelectionPreview.transform.position = hit.point;
-            currentSelectionPreview = Instantiate(buildingOptions[currentSelection], hit.point, Quaternion.identity);
+            currentSelectionPreview = Instantiate(buildingOptions[currentSelection], Vector3.zero, Quaternion.identity);
 
             List<Collider> colliders = new List<Collider>();
 
@@ -428,6 +418,16 @@ public class PlayerBuilding : MonoBehaviour
             {
                 Destroy(collider1);
             }
+        }
+
+        RaycastHit hit;
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
+        {
+            renderPos1 = transform.position;
+            renderPos2 = hit.point;
+
+            currentSelectionPreview.transform.position = hit.point;
         }
     }
 
