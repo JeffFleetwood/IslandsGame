@@ -384,11 +384,8 @@ public class PlayerBuilding : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistance, environmentLayer))
         {
-            //renderer.SetPosition(0, transform.position + new Vector3(0, 1f, 0));
-            //renderer.SetPosition(1, hit.point);
-
-            renderPos1 = cam.transform.position + new Vector3(0, -2f, 0);
-            renderPos2 = hit.point;
+            //renderPos1 = cam.transform.position + new Vector3(0, -2f, 0);
+            //renderPos2 = hit.point;
 
             if (Input.GetKey(KeyCode.Mouse0))
             {
