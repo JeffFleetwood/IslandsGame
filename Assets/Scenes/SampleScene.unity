@@ -1210,7 +1210,7 @@ PrefabInstance:
     - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
         type: 3}
       propertyPath: buildingOptions.Array.size
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
         type: 3}
@@ -2444,7 +2444,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buildingOptions.Array.data[9]
       value: 
-      objectReference: {fileID: 2182812894288808136, guid: dbfdc630c7a20f443832afc5aff84c73,
+      objectReference: {fileID: 3835379666668434997, guid: 54c530fe06c4fa244b3ad2e5664de0de,
         type: 3}
     - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
         type: 3}
@@ -2461,6 +2461,36 @@ PrefabInstance:
       propertyPath: rayDistance
       value: 1e+31
       objectReference: {fileID: 0}
+    - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: buildingOptions.Array.data[10]
+      value: 
+      objectReference: {fileID: 9084170921711468526, guid: fd8d90cc25f927741b85aae9c001a044,
+        type: 3}
+    - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: buildingOptions.Array.data[11]
+      value: 
+      objectReference: {fileID: 2956310410296844663, guid: bd62e0d2d2e53e4479157a889d7aa082,
+        type: 3}
+    - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: buildingOptions.Array.data[12]
+      value: 
+      objectReference: {fileID: 3617308360581169772, guid: be59746a202246b4d9d6b9387f25cdfb,
+        type: 3}
+    - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: buildingOptions.Array.data[13]
+      value: 
+      objectReference: {fileID: 2231228200241480159, guid: 98a58554adea3964ca1c9bdbd39fd1a3,
+        type: 3}
+    - target: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+        type: 3}
+      propertyPath: buildingOptions.Array.data[14]
+      value: 
+      objectReference: {fileID: 7287355494785972709, guid: 1552161472a4fc04db03f36ab584bef1,
+        type: 3}
     - target: {fileID: 7726281432159702726, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
         type: 3}
       propertyPath: speed
