@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7692073291898448236}
   - component: {fileID: 6816314150915886000}
+  - component: {fileID: 6439052835329881171}
   m_Layer: 9
   m_Name: Ferrari Surfy Boi
   m_TagString: GameController
@@ -41,6 +42,19 @@ BoxCollider:
   m_GameObject: {fileID: 6693723708444810111}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16533265, y: 3.3475018, z: 0.8521944}
+  m_Center: {x: -0.017388716, y: 1.6780295, z: 0.0043472648}
+--- !u!65 &6439052835329881171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693723708444810111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.16533265, y: 3.3475018, z: 0.8521944}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 421232104541572446}
   - component: {fileID: 8937888362622814209}
+  - component: {fileID: 7413781388759459613}
   m_Layer: 9
   m_Name: Dolphin
   m_TagString: DestroyMe
@@ -41,6 +42,19 @@ BoxCollider:
   m_GameObject: {fileID: 2661000602036964404}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.7864618, z: 1.6310529}
+  m_Center: {x: 0, y: 1.0996339, z: 0.70640284}
+--- !u!65 &7413781388759459613
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661000602036964404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.7864618, z: 1.6310529}

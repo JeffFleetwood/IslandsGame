@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2919091183711725294}
   - component: {fileID: 4733975675026545096}
+  - component: {fileID: 2038304961655354266}
   m_Layer: 9
   m_Name: Dinosaur
   m_TagString: DestroyMe
@@ -41,6 +42,19 @@ BoxCollider:
   m_GameObject: {fileID: 7175299058122691912}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2559059, y: 4.2671123, z: 4.8204136}
+  m_Center: {x: -0.021956563, y: 2.037554, z: 0.2942152}
+--- !u!65 &2038304961655354266
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175299058122691912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.2559059, y: 4.2671123, z: 4.8204136}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 417892862460157165}
   - component: {fileID: 2030831347001199481}
+  - component: {fileID: 782171489976958080}
   m_Layer: 9
   m_Name: Longboard
   m_TagString: DestroyMe
@@ -41,6 +42,19 @@ BoxCollider:
   m_GameObject: {fileID: 4336291661094134081}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22143319, y: 4.092932, z: 1.0319958}
+  m_Center: {x: -0.026663126, y: 2.0584004, z: 0.01599797}
+--- !u!65 &782171489976958080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336291661094134081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.22143319, y: 4.092932, z: 1.0319958}

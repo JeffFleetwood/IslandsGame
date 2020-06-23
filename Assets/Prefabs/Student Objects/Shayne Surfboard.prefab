@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4779933746508926619}
   - component: {fileID: 2835716972309625343}
+  - component: {fileID: 6310446480159443858}
   m_Layer: 0
   m_Name: Shayne Surfboard
   m_TagString: Untagged
@@ -119,6 +120,19 @@ BoxCollider:
   m_GameObject: {fileID: 8362874111764462728}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18272153, y: 3.3475022, z: 0.85219437}
+  m_Center: {x: -0.008694276, y: 1.6780293, z: 0.013041705}
+--- !u!65 &6310446480159443858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8362874111764462728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.18272153, y: 3.3475022, z: 0.85219437}

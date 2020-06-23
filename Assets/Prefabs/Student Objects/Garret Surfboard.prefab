@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2647332081764309435}
   - component: {fileID: 7191652327700365994}
+  - component: {fileID: 6230485819976147808}
   m_Layer: 9
   m_Name: Garret Surfboard
   m_TagString: DestroyMe
@@ -41,6 +42,19 @@ BoxCollider:
   m_GameObject: {fileID: 504498738027135863}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.106064506, y: 2.0261762, z: 0.50807166}
+  m_Center: {x: -0.013223767, y: 1.0208857, z: 0.0026447137}
+--- !u!65 &6230485819976147808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504498738027135863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.106064506, y: 2.0261762, z: 0.50807166}

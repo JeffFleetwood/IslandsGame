@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2698839464684566807}
   - component: {fileID: 1279718743948289486}
+  - component: {fileID: 6371792305297798532}
   m_Layer: 9
   m_Name: lighthaus
   m_TagString: DestroyMe
@@ -122,6 +123,19 @@ BoxCollider:
   m_GameObject: {fileID: 1382444459224124164}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.870003, y: 63.708992, z: 12.52134}
+  m_Center: {x: 0, y: 31.354494, z: -0.0000065259223}
+--- !u!65 &6371792305297798532
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382444459224124164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 13.870003, y: 63.708992, z: 12.52134}

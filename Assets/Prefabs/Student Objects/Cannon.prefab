@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2080333281800764841}
   - component: {fileID: 3450727713472903452}
+  - component: {fileID: 8314914833279540977}
   m_Layer: 9
   m_Name: Cannon
   m_TagString: DestroyMe
@@ -41,6 +42,19 @@ BoxCollider:
   m_GameObject: {fileID: 5366143652511161746}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.46391472, y: 0.44729185, z: 1.428037}
+  m_Center: {x: -0.006233558, y: 0.1973958, z: -0.21401852}
+--- !u!65 &8314914833279540977
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366143652511161746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.46391472, y: 0.44729185, z: 1.428037}
