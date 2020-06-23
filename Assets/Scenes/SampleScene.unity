@@ -1570,6 +1570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1473455770}
+  playerCon: {fileID: 1271384557}
+  playerBuild: {fileID: 1271384556}
 --- !u!1 &603562551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6727553502193042139, guid: fa909175baec90543abac8ce5cbd0bc7,
@@ -1675,6 +1677,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1590701067}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 592268130}
+        m_MethodName: StopAudio
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 352308656}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 592268130}
+        m_MethodName: StopAudio
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1587723797}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4328,6 +4352,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b7a9ed307d94fb4abce2fbd39823c71, type: 3}
+--- !u!114 &1271384556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7726281432159702725, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+    type: 3}
+  m_PrefabInstance: {fileID: 1271384555}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16ed3bc45c10fb4a9d3c3e2ee1e3329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1271384557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7726281432159702726, guid: 7b7a9ed307d94fb4abce2fbd39823c71,
+    type: 3}
+  m_PrefabInstance: {fileID: 1271384555}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a306c165bc446534096c3ae1f87240e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1301433063
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,6 +4534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364915737}
   - component: {fileID: 1364915736}
+  - component: {fileID: 1364915738}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4517,6 +4566,15 @@ MonoBehaviour:
   - {fileID: 1481416533}
   - {fileID: 179010540}
   - {fileID: 933151641}
+  VolumeList:
+  - MasterVolume
+  - MusicVolume
+  - SFXVolume
+  PlayerPrefList:
+  - MasterVolume
+  - MusicVolume
+  - SFXVolume
+  Mixer: {fileID: 24100000, guid: ddaf2fe2345a0294e892116eee0007f5, type: 2}
 --- !u!4 &1364915737
 Transform:
   m_ObjectHideFlags: 0
@@ -4531,6 +4589,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1364915738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364915735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76bbe20ed80e5b43bb7a9db4bf8dd0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1388142970
 GameObject:
   m_ObjectHideFlags: 0

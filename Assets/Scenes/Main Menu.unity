@@ -1718,6 +1718,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5108865920534325425}
+        m_MethodName: StopAudio
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1774338372}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5108865920534325425}
+        m_MethodName: StopAudio
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1491049125}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &890920831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4010,6 +4032,7 @@ GameObject:
   - component: {fileID: 5108865920534325430}
   - component: {fileID: 5108865920534325433}
   - component: {fileID: 5108865920534325425}
+  - component: {fileID: 5108865920534325431}
   m_Layer: 5
   m_Name: Menu Canvas
   m_TagString: Untagged
@@ -4138,6 +4161,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 26cd9dec044717848bcff01a3431e192, type: 3}
   - {fileID: 21300000, guid: d0d62710cb0f83148857c17dcfd981a7, type: 3}
   - {fileID: 21300000, guid: 16e307f4a4f481d4eac3c7905b760d81, type: 3}
+--- !u!114 &5108865920534325431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108865920534325424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76bbe20ed80e5b43bb7a9db4bf8dd0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5108865920534325433
 MonoBehaviour:
   m_ObjectHideFlags: 0
