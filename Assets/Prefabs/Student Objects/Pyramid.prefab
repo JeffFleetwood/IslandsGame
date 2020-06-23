@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 825208538979864262}
   - component: {fileID: 6945277249324616497}
+  - component: {fileID: 8588550282204259944}
   m_Layer: 9
   m_Name: Pyramid
   m_TagString: DestroyMe
@@ -102,7 +103,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4407021908945894613}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2166367, y: 2.2166367, z: 2.2166367}
   m_Children:
@@ -121,5 +122,18 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6549313, y: 1.3947396, z: 1.3802725}
-  m_Center: {x: 0, y: 0.6767005, z: 0.69013625}
+  m_Size: {x: 1.6549313, y: 1.3947396, z: 1.5751528}
+  m_Center: {x: 0, y: 0.6767005, z: -0.0016903927}
+--- !u!65 &8588550282204259944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407021908945894613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6549313, y: 1.3947396, z: 1.5751528}
+  m_Center: {x: 0, y: 0.6767005, z: -0.0016903927}
