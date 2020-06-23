@@ -29,6 +29,8 @@ public class PlayerBuilding : MonoBehaviour
     public GameObject destroyModeSelection;
 
     public Text instructions;
+    public Text limit;
+    public int buildLimit;
 
     bool useNormal = true;
 
@@ -43,6 +45,7 @@ public class PlayerBuilding : MonoBehaviour
     Camera cam;
     GameObject currentSelectionPreview;
     GameObject lastSelectionPreview;
+    int builtObjects;
     
     private void Awake()
     {
@@ -55,6 +58,7 @@ public class PlayerBuilding : MonoBehaviour
         destroyModeSelection.SetActive(false); //Destory or go back
 
         instructions.text = "press 1 for build mode, and 2 for destroy mode. ";
+
     }
 
     private void Start()
@@ -82,6 +86,9 @@ public class PlayerBuilding : MonoBehaviour
     bool zRotateMode = false;
     bool showLineRender = false;
     bool scrollable = false;
+    bool buildLimitReached;
+    bool buildLimitWarning;
+    bool allowBuilding = true;
 
     private void Update()
     {
@@ -101,6 +108,14 @@ public class PlayerBuilding : MonoBehaviour
         else
         {
             renderer.startColor = Color.red;
+        }
+
+        if (builtObjects >= buildLimit)
+        {
+            limit.gameObject.SetActive(true);
+            limit.text = "WARNING YOU HAVE REACHED THE BUILD LIMIT";
+            limit.color = Color.red;
+            allowBuilding = false;
         }
         
         ResetMenu();
@@ -142,7 +157,7 @@ public class PlayerBuilding : MonoBehaviour
             return;
         }
 
-        if (buildMode)
+        if (buildMode && builtObjects >= buildLimit)
         {
             Preview();
 
@@ -390,6 +405,7 @@ public class PlayerBuilding : MonoBehaviour
                 if (hit.collider.gameObject.tag == "DestroyMe")
                 {
                     Destroy(hit.collider.gameObject);
+                    builtObjects--;
                 }
             }
         }
@@ -435,6 +451,7 @@ public class PlayerBuilding : MonoBehaviour
         Vector3 scale = currentSelectionPreview.transform.localScale;
 
         GameObject buildObject = Instantiate(buildingOptions[currentSelection], pos, rot);
+        builtObjects++;
         buildObject.transform.localScale = scale;
     }
 
