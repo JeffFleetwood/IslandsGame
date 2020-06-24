@@ -466,6 +466,7 @@ public class PlayerBuilding : MonoBehaviour
             yield return new WaitForSeconds(updateDelay / 100);
         }
     }
+
     private void OnApplicationQuit()
     {
         Debug.Log("on application quit");

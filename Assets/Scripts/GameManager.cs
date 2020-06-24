@@ -10,15 +10,16 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> islands;
 
+    int island;
+
     private void Awake()
     {
         instance = this;
+
+        island = PlayerPrefs.GetInt("IslandCount");
+        islands[island].SetActive(true);
     }
-    private void Start()
-    {
-        int template = PlayerPrefs.GetInt("IslandCount");
-        islands[template].SetActive(true);
-    }
+
     public void GameSave(Dictionary<GameObject, int> worldState) 
     {
         List<Vector3> positions = new List<Vector3>();
@@ -33,22 +34,20 @@ public class GameManager : MonoBehaviour
             scales.Add(gO.Key.transform.localScale);
             objectIndex.Add(gO.Value);
         }
-        
-        PlayerPrefsX.SetVector3Array("objectPositions", positions.ToArray());
-        PlayerPrefsX.SetQuaternionArray("objectRotations", rotations.ToArray());
-        PlayerPrefsX.SetVector3Array("objectScales", scales.ToArray());
-        PlayerPrefsX.SetIntArray("objectsIndex", objectIndex.ToArray());
 
-
+        PlayerPrefsX.SetVector3Array("objectPositions"+ island, positions.ToArray());
+        PlayerPrefsX.SetQuaternionArray("objectRotations" + island, rotations.ToArray());
+        PlayerPrefsX.SetVector3Array("objectScales" + island, scales.ToArray());
+        PlayerPrefsX.SetIntArray("objectsIndex" + island, objectIndex.ToArray());
     }
-
+     
     public Dictionary<GameObject, int> GameLoad(List <GameObject> buildingOptions) 
     {
         Dictionary<GameObject, int> worldState = new Dictionary<GameObject, int>();
-        List<Vector3> positions = PlayerPrefsX.GetVector3Array("objectPositions").ToList();
-        List<Quaternion> rotations = PlayerPrefsX.GetQuaternionArray("objectRotations").ToList();
-        List<Vector3> scales = PlayerPrefsX.GetVector3Array("objectScales").ToList();
-        List<int> objectIndex = PlayerPrefsX.GetIntArray("objectsIndex").ToList();
+        List<Vector3> positions = PlayerPrefsX.GetVector3Array("objectPositions" + island).ToList();
+        List<Quaternion> rotations = PlayerPrefsX.GetQuaternionArray("objectRotations" + island).ToList();
+        List<Vector3> scales = PlayerPrefsX.GetVector3Array("objectScales" + island).ToList();
+        List<int> objectIndex = PlayerPrefsX.GetIntArray("objectsIndex" + island).ToList();
 
         for (int currentIndex = 0; currentIndex < objectIndex.Count; currentIndex++)
         {
@@ -61,5 +60,5 @@ public class GameManager : MonoBehaviour
         }
         return worldState;
     }
-
 }
+ 
