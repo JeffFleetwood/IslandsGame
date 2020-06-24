@@ -6,8 +6,14 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public List<GameObject> islands;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         int template = PlayerPrefs.GetInt("IslandCount");
@@ -27,13 +33,33 @@ public class GameManager : MonoBehaviour
             scales.Add(gO.Key.transform.localScale);
             objectIndex.Add(gO.Value);
         }
-
+        
         PlayerPrefsX.SetVector3Array("objectPositions", positions.ToArray());
         PlayerPrefsX.SetQuaternionArray("objectRotations", rotations.ToArray());
         PlayerPrefsX.SetVector3Array("objectScales", scales.ToArray());
         PlayerPrefsX.SetIntArray("objectsIndex", objectIndex.ToArray());
 
 
-    } 
+    }
+
+    public Dictionary<GameObject, int> GameLoad(List <GameObject> buildingOptions) 
+    {
+        Dictionary<GameObject, int> worldState = new Dictionary<GameObject, int>();
+        List<Vector3> positions = PlayerPrefsX.GetVector3Array("objectPositions").ToList();
+        List<Quaternion> rotations = PlayerPrefsX.GetQuaternionArray("objectRotations").ToList();
+        List<Vector3> scales = PlayerPrefsX.GetVector3Array("objectScales").ToList();
+        List<int> objectIndex = PlayerPrefsX.GetIntArray("objectsIndex").ToList();
+
+        for (int currentIndex = 0; currentIndex < objectIndex.Count; currentIndex++)
+        {
+            GameObject loadedObject = Instantiate(buildingOptions[objectIndex[currentIndex]]);
+            loadedObject.transform.position = positions[currentIndex];
+            loadedObject.transform.rotation = rotations[currentIndex];
+            loadedObject.transform.localScale = scales[currentIndex];
+
+            worldState.Add(loadedObject, objectIndex[currentIndex]);
+        }
+        return worldState;
+    }
 
 }
