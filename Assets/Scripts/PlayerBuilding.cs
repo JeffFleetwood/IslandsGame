@@ -33,6 +33,8 @@ public class PlayerBuilding : MonoBehaviour
 
     public Text instructions;
 
+    private Dictionary<GameObject, int> worldState = new Dictionary<GameObject, int>();
+
     bool useNormal = true;
 
     int clones;
@@ -407,6 +409,7 @@ public class PlayerBuilding : MonoBehaviour
         {
             Destroy(lastSelectionPreview);
             currentSelectionPreview = Instantiate(buildingOptions[currentSelection], Vector3.zero, Quaternion.identity);
+            worldState.Add(currentSelectionPreview, currentSelection);
 
             List<Collider> colliders = new List<Collider>();
 
