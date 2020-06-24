@@ -467,10 +467,15 @@ public class PlayerBuilding : MonoBehaviour
         }
     }
 
+    public void Save()
+    {
+        GameManager.instance.GameSave(worldState);
+    }
+
     private void OnApplicationQuit()
     {
         Debug.Log("on application quit");
-        GameManager.instance.GameSave(worldState);
+        Save();
     }
 }
 
