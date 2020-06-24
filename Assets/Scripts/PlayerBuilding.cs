@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
-using JetBrains.Annotations;
 
 public class PlayerBuilding : MonoBehaviour
 {
@@ -32,10 +30,6 @@ public class PlayerBuilding : MonoBehaviour
     public GameObject rotationSelection;
     public GameObject scaleSelection;
     public GameObject destroyModeSelection;
-
-    private Quaternion relativeRotation;
-    private Quaternion desiredRotation;
-    
 
     public Text instructions;
 
@@ -369,28 +363,19 @@ public class PlayerBuilding : MonoBehaviour
     void RotateXMode()
     {
         float mouseWheelInput = Input.mouseScrollDelta.y;
-        Quaternion xrotation = Quaternion.Euler(mouseWheelInput, 0, 0);
-        desiredRotation *= xrotation;
-        //currentSelectionPreview.transform.Rotate(mouseWheelInput * rotSpeed * Time.deltaTime, 0, 0, Space.Self);
-        currentSelectionPreview.transform.rotation *= relativeRotation * xrotation;
+        currentSelectionPreview.transform.Rotate(mouseWheelInput * rotSpeed * Time.deltaTime, 0, 0);
     }
 
     void RotateYMode()
     {
         float mouseWheelInput = Input.mouseScrollDelta.y;
-        Quaternion yrotation = Quaternion.Euler(0, mouseWheelInput, 0);
-        desiredRotation *= yrotation;
-        //currentSelectionPreview.transform.Rotate(0, mouseWheelInput * rotSpeed * Time.deltaTime, 0, Space.Self);
-        currentSelectionPreview.transform.rotation *= relativeRotation * yrotation;
+        currentSelectionPreview.transform.Rotate(0, mouseWheelInput * rotSpeed * Time.deltaTime, 0);
     }
 
     void RotateZMode()
     {
         float mouseWheelInput = Input.mouseScrollDelta.y;
-        Quaternion zrotation = Quaternion.Euler(0, 0, mouseWheelInput);
-        desiredRotation *= zrotation;
-        //currentSelectionPreview.transform.Rotate(0, 0, mouseWheelInput * rotSpeed * Time.deltaTime, Space.Self);
-        currentSelectionPreview.transform.rotation *= relativeRotation * zrotation;
+        currentSelectionPreview.transform.Rotate(0, 0, mouseWheelInput * rotSpeed * Time.deltaTime);
     }
 
     void DestroyMode()
@@ -444,13 +429,6 @@ public class PlayerBuilding : MonoBehaviour
         {
             renderPos1 = transform.position;
             renderPos2 = hit.point;
-            if (rotateMode == false)
-            {
-                Vector3 ObjectOrientation = transform.position - hit.point;
-                ObjectOrientation.y = 0;
-                relativeRotation = Quaternion.LookRotation(ObjectOrientation, Vector3.up);
-                currentSelectionPreview.transform.rotation = relativeRotation;
-            }   
 
             currentSelectionPreview.transform.position = hit.point;
         }
