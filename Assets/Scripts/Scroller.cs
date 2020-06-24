@@ -15,6 +15,14 @@ public class Scroller : MonoBehaviour
         player.Play();
     }
 
+    void OnEnable()
+    {
+        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -1100, 0);
+        start = false;
+        player.Stop();
+        player.Play();
+    }
+
     void Update()
     {
         transform.position += new Vector3(0, scrollSpeed * Time.deltaTime, 0);
