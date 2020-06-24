@@ -33,6 +33,8 @@ public class PlayerBuilding : MonoBehaviour
 
     public Text instructions;
 
+    private Dictionary<GameObject, int> worldState = new Dictionary<GameObject, int>();
+
     bool useNormal = true;
 
     int clones;
@@ -62,7 +64,7 @@ public class PlayerBuilding : MonoBehaviour
 
     private void Start()
     {
-
+        worldState = GameManager.instance.GameLoad(buildingOptions);
         lastSelection = -1;
         StartCoroutine(UpdateLineRender(1));
         cam = Camera.main;
@@ -395,6 +397,7 @@ public class PlayerBuilding : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == "DestroyMe")
                 {
+                    worldState.Remove(hit.collider.gameObject);
                     Destroy(hit.collider.gameObject);
                 }
             }
@@ -407,6 +410,7 @@ public class PlayerBuilding : MonoBehaviour
         {
             Destroy(lastSelectionPreview);
             currentSelectionPreview = Instantiate(buildingOptions[currentSelection], Vector3.zero, Quaternion.identity);
+          
 
             List<Collider> colliders = new List<Collider>();
 
@@ -441,6 +445,7 @@ public class PlayerBuilding : MonoBehaviour
         Vector3 scale = currentSelectionPreview.transform.localScale;
 
         GameObject buildObject = Instantiate(buildingOptions[currentSelection], pos, rot);
+        worldState.Add(buildObject, currentSelection);
         buildObject.transform.localScale = scale;
     }
 
@@ -462,4 +467,10 @@ public class PlayerBuilding : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        Debug.Log("on application quit");
+        GameManager.instance.GameSave(worldState);
+    }
 }
+
